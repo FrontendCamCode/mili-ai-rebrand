@@ -1,0 +1,466 @@
+---
+import "../styles/global.css";
+
+const icons = {
+  arrowLeft:
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="M5 12l6 6"></path><path d="M5 12l6 -6"></path></svg>',
+  arrowRight:
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 18l6 -6"></path><path d="M13 6l6 6"></path></svg>',
+  boxes:
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 4.5v9l-8 4.5l-8 -4.5v-9z"></path><path d="M12 12l8 -4.5"></path><path d="M12 12v9"></path><path d="M12 12l-8 -4.5"></path></svg>',
+  search:
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path><path d="M21 21l-6 -6"></path></svg>',
+  database:
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6c0 1.657 3.582 3 8 3s8 -1.343 8 -3s-3.582 -3 -8 -3s-8 1.343 -8 3"></path><path d="M4 6v6c0 1.657 3.582 3 8 3s8 -1.343 8 -3v-6"></path><path d="M4 12v6c0 1.657 3.582 3 8 3s8 -1.343 8 -3v-6"></path></svg>',
+  chart:
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19l16 0"></path><path d="M4 15l4 -6l4 2l4 -5l4 3"></path></svg>',
+  shield:
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 4v5c0 5 -3.5 8.5 -8 9c-4.5 -.5 -8 -4 -8 -9v-5z"></path><path d="M9 12l2 2l4 -4"></path></svg>',
+  clock:
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7v5l3 3"></path><path d="M12 21a9 9 0 1 0 0 -18a9 9 0 0 0 0 18z"></path></svg>',
+  settings:
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"></path><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"></path></svg>',
+  checklist:
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6h11"></path><path d="M9 12h11"></path><path d="M9 18h11"></path><path d="M5 6l0 .01"></path><path d="M5 12l0 .01"></path><path d="M5 18l0 .01"></path></svg>',
+};
+
+const heroFeatures = [
+  { label: "Material Search", icon: icons.search },
+  { label: "Material Creation", icon: icons.boxes },
+  { label: "Material Extension", icon: icons.database },
+  { label: "Bulk Enrichment", icon: icons.checklist },
+  { label: "ROP & ROQ Calculator", icon: icons.chart },
+  { label: "Lead Time Calculator", icon: icons.clock },
+  { label: "Material Details", icon: icons.database },
+  { label: "Flag for Deletion", icon: icons.shield },
+  { label: "Free Text Monitor", icon: icons.search },
+  { label: "BOM Monitor", icon: icons.boxes },
+  { label: "Duplicate Monitor", icon: icons.checklist },
+  { label: "Criticality Calculator", icon: icons.settings },
+];
+
+const outcomes = [
+  { label: "Drive tangible savings", icon: icons.chart },
+  { label: "Unlock working capital", icon: icons.boxes },
+  { label: "Reduce operational risk", icon: icons.shield },
+  { label: "Calculate lead times and criticality", icon: icons.clock },
+  { label: "Optimize ROP-ROQ / MIN-MAX", icon: icons.settings },
+  { label: "Improve stocking strategies", icon: icons.checklist },
+];
+
+const heroSlides = [
+  {
+    eyebrow: "MiLi platform",
+    title: "Your trusted indirect material supply chain platform.",
+    icon: icons.boxes,
+    features: [
+      ["Manage", "Monitor and maintain your indirect material supply chain every step of the way."],
+      ["Optimize", "Unlock working capital and reduce operational risk at the lowest possible cost."],
+      ["Integrate", "Use certified SAP-ready workflows without core ERP custom code."],
+      ["Control", "Stage every change through configurable approvals before posting back."],
+    ],
+  },
+  {
+    eyebrow: "Material data",
+    title: "Clean the records that power your ERP.",
+    icon: icons.database,
+    features: [
+      ["Search", "Search your material records in seconds."],
+      ["Create", "Guide new material creation with cleaner data capture."],
+      ["Extend", "Extend materials across plants and business units."],
+      ["Enrich", "Bulk enrich records to reduce master data noise."],
+    ],
+  },
+  {
+    eyebrow: "Inventory logic",
+    title: "Optimize stocking positions with better signals.",
+    icon: icons.chart,
+    features: [
+      ["ROP/ROQ", "Calculate reorder points and reorder quantities."],
+      ["Lead time", "Calculate lead times using real operating data."],
+      ["Criticality", "Understand material criticality before risk escalates."],
+      ["Deletion", "Flag obsolete records for controlled review."],
+    ],
+  },
+  {
+    eyebrow: "Monitoring",
+    title: "Find exceptions before they become operational risk.",
+    icon: icons.search,
+    features: [
+      ["Free text", "Monitor uncatalogued spend and risky descriptions."],
+      ["BOM", "Monitor bills of material for supply chain gaps."],
+      ["Duplicates", "Review and remove duplicate material records."],
+      ["Approvals", "Keep humans in control before posting changes."],
+    ],
+  },
+  {
+    eyebrow: "Pilot",
+    title: "Take MiLi for a test drive with your own data.",
+    icon: icons.shield,
+    features: [
+      ["Qualify", "Answer 5 key questions to assess pilot fit."],
+      ["Instance", "Spin up a dedicated MiLi environment."],
+      ["Populate", "Load your data and walk through module functionality."],
+      ["Prove ROI", "Build a real world business case before go live."],
+    ],
+  },
+];
+
+const featureCards = [
+  {
+    title: "Material Search",
+    copy: "Search your material records in seconds and give teams the confidence to find the right item fast.",
+  },
+  {
+    title: "Material Enrichment",
+    copy: "Clean, standardize, and enrich the master data that powers your ERP and MRO processes.",
+  },
+  {
+    title: "ROP/ROQ Calculator",
+    copy: "Optimize stocking strategies with reorder logic designed for indirect material supply chains.",
+  },
+];
+
+const steps = [
+  { title: "Connect", copy: "A baseline ERP or CMMS connection can be completed in hours with pre-built connectors and APIs." },
+  { title: "Pilot", copy: "Lexin spins up a dedicated MiLi instance, populates it with your data, and walks your team through the modules." },
+  { title: "Go live", copy: "Run approval workflows, monitor exceptions, and post reviewed changes back to your system of record." },
+];
+
+const compareRows = [
+  ["Integration", "2-4 hour baseline connection", "Core ERP project", "Manual extracts"],
+  ["Controls", "Configurable approval workflow", "Generic permissions", "Shared spreadsheets"],
+  ["Data quality", "Bulk enrichment and duplicate monitor", "Periodic cleanup", "Uncatalogued noise"],
+  ["Stocking", "ROP/ROQ and lead time calculators", "Static reorder points", "Reactive buying"],
+  ["Security", "SOC 2 Type II, ISO 27001, TLS 1.3, AES-256", "Vendor dependent", "File-based risk"],
+];
+
+const testimonials = [
+  {
+    quote: "Working capital savings in the first 12 months.",
+    metric: "$9 million",
+    role: "Real world customer result",
+  },
+  {
+    quote: "Savings identified in the first 30 days.",
+    metric: "$1.2 million",
+    role: "Real world customer result",
+  },
+  {
+    quote: "Lead time reduction from 19 days to 2 days.",
+    metric: "17 days",
+    role: "Real world customer result",
+  },
+];
+
+const statTiles = [
+  "$9M working capital savings",
+  "$1.2M savings identified",
+  "58% MRP exception reduction",
+  "3.3x stock turns increase",
+  "21% inventory position reduction",
+  "11% unit cost reduction",
+];
+
+const faqs = [
+  {
+    question: "How long does it take to integrate MiLi with our ERP or CMMS?",
+    answer:
+      "A baseline connection, including delta extracts, can be completed within 2-4 hours using pre-built connectors and APIs. No core ERP custom code is required, and MiLi is certified by SAP.",
+  },
+  {
+    question: "What if we incorrectly overwrite our master data in MiLi?",
+    answer:
+      "All changes are staged in your dedicated MiLi instance and routed through configurable approval workflows before approved roles post them back to the system of record.",
+  },
+  {
+    question: "What data security and compliance standards do you meet?",
+    answer:
+      "MiLi is SOC 2 Type II certified, runs in ISO 27001 data centres, encrypts data in transit and at rest, supports SSO/SAML, and keeps data in-region.",
+  },
+  {
+    question: "When should we expect measurable ROI?",
+    answer:
+      "Most customers breakeven within 6 months from go live, driven by duplicate elimination and inventory optimization. Lexin has also helped clients realize ROI before go live.",
+  },
+  {
+    question: "How is MiLi licensed and what's included?",
+    answer:
+      "MiLi is sold modularly, with each solution addressing a specific business challenge. Licensing includes unlimited users, no hidden data-volume costs, support, maintenance, and new modules.",
+  },
+  {
+    question: "What is a MiLi Lite Pilot?",
+    answer:
+      "A dedicated pilot instance populated with your data so your team can test MiLi, validate the business case, and see where working capital and operational risk can be improved.",
+  },
+];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="MiLi is Lexin Solutions' indirect material supply chain platform for asset intensive industries."
+    />
+    <title>MiLi | Lexin Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="top-bar">
+      <a class="brand" href="/" aria-label="Lexin Solutions home">
+        <img src="/images/lexin-logo-reverse.png" alt="Lexin Solutions" />
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#features">Features</a>
+        <a href="#pilot">Pilot</a>
+        <a href="#compare">Compare</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a class="nav-cta" href="mailto:info@lexinsolutions.com">Contact us</a>
+    </header>
+
+    <main>
+      <section class="hero-shell">
+        <div class="media-column">
+          <div class="slider-shell" data-slider>
+            <div class="slides-track" data-slides>
+              {heroSlides.map((slide, index) => (
+                <article class:list={["product-hero", { "is-active": index === 0 }]} data-slide aria-hidden={index === 0 ? "false" : "true"}>
+                  <div class="hero-card-copy">
+                    <p>{slide.eyebrow}</p>
+                    <h1>{slide.title}</h1>
+                  </div>
+                  <div class="feature-stack">
+                    {slide.features.map(([title, copy]) => (
+                      <article><b>{title}</b><span>{copy}</span></article>
+                    ))}
+                  </div>
+                </article>
+              ))}
+            </div>
+            <button class="slider-arrow previous" type="button" aria-label="Previous slide" data-slide-prev set:html={icons.arrowLeft}></button>
+            <button class="slider-arrow next" type="button" aria-label="Next slide" data-slide-next set:html={icons.arrowRight}></button>
+          </div>
+          <div class="thumb-strip" aria-label="MiLi module thumbnails" data-slide-thumbs>
+            {heroSlides.map((slide, index) => (
+              <button class:list={[{ "is-active": index === 0 }]} type="button" aria-label={`Show ${slide.eyebrow}`} data-slide-thumb={index}>
+                <span set:html={slide.icon}></span>
+              </button>
+            ))}
+          </div>
+          <figure class="hero-quote">
+            <blockquote>
+              "We enable your team to fully realize the benefits of MiLi across all pillars of your indirect material supply chain."
+            </blockquote>
+            <figcaption>
+              <b>The Lexin Way</b>
+              <span>Outcomes-driven technology partner</span>
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="offer-column">
+          <div class="rating-row" aria-label="Platform status">
+            <span>Certified</span>
+            <b>SAP integrated</b>
+            <small>SOC 2 Type II</small>
+          </div>
+          <h2>Take MiLi for a test drive today.</h2>
+          <p class="subhead">
+            MiLi helps solve your MRO supply chain challenges by focusing on the core data and business processes that power your supply chain.
+          </p>
+          <div class="discount-pill">MiLi Lite Pilot</div>
+
+          <section class="feature-panel" aria-labelledby="feature-panel-title">
+            <div class="feature-panel-head">
+              <h3 id="feature-panel-title">What's inside MiLi</h3>
+              <p>Modular solutions for specific indirect material supply chain challenges.</p>
+            </div>
+            <div class="mini-feature-grid" data-feature-list>
+              {heroFeatures.map((feature, index) => (
+                <article class:list={["mini-feature", { "is-extra": index > 3 }]}>
+                  <span set:html={feature.icon}></span>
+                  <b>{feature.label}</b>
+                </article>
+              ))}
+            </div>
+            <div class="feature-fade" data-feature-fade>
+              <button type="button" data-feature-toggle>View all features</button>
+            </div>
+          </section>
+
+          <div class="bonus-box">
+            <b>Setup your MiLi Lite Pilot</b>
+            <span>Answer 5 key questions to see if your organization qualifies for a pilot with your own data.</span>
+          </div>
+
+          <a class="primary-cta" href="mailto:info@lexinsolutions.com">Contact us <span set:html={icons.arrowRight}></span></a>
+          <ul class="check-list">
+            <li>Dedicated MiLi instance populated with your data</li>
+            <li>Unlimited user license model</li>
+            <li>24x7 technical and functional support</li>
+          </ul>
+          <div class="trust-row">
+            <div class="avatar-stack"><span></span><span></span><span></span><span></span></div>
+            <b>Built for asset intensive industries</b>
+          </div>
+        </div>
+      </section>
+
+      <section class="benefits-section" id="features">
+        <div class="section-heading">
+          <h2>Designed to support how you work.</h2>
+          <p>MiLi helps you manage, monitor, and maintain your indirect material supply chain every step of the way.</p>
+        </div>
+        <div class="icon-row">
+          {outcomes.map((benefit) => <article><span set:html={benefit.icon}></span><b>{benefit.label}</b></article>)}
+        </div>
+        <div class="feature-grid">
+          {featureCards.map((card, index) => (
+            <article>
+              <div class={`photo-placeholder tone-${index + 1}`}></div>
+              <h3>{card.title}</h3>
+              <p>{card.copy}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="steps-section" id="pilot">
+        <div class="section-heading">
+          <h2>Go live with a full-use enterprise SaaS pilot.</h2>
+          <p>Less than 5 business days to go live with a dedicated MiLi Lite Pilot experience.</p>
+        </div>
+        <div class="steps-grid">
+          {steps.map((step, index) => (
+            <article>
+              <div class="step-visual"><span>Step {index + 1}</span></div>
+              <h3>{step.title}</h3>
+              <p>{step.copy}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="comparison-section" id="compare">
+        <div class="section-heading">
+          <h2>How MiLi compares.</h2>
+          <p>A cleaner way to address indirect material risk, master data quality, and inventory optimization.</p>
+        </div>
+        <div class="compare-table">
+          <div class="compare-head">
+            <b>MiLi</b>
+            <b>Traditional project</b>
+            <b>Manual work</b>
+          </div>
+          {compareRows.map((row) => (
+            <div class="compare-row">
+              <span>{row[0]}</span>
+              <strong>{row[1]}</strong>
+              <em>{row[2]}</em>
+              <em>{row[3]}</em>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section class="social-proof">
+        <div class="community-collage">
+          {statTiles.map((stat) => <span>{stat}</span>)}
+          <strong>Real world results we've achieved with customers</strong>
+        </div>
+        <div class="testimonial-list">
+          {testimonials.map((item) => (
+            <article>
+              <span>{item.metric}</span>
+              <h3>{item.quote}</h3>
+              <p>{item.role}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="reviews-section">
+        <div class="section-heading">
+          <h2>The Lexin Way.</h2>
+          <p>We do not just sell you software. We enable your team to realize the benefits of MiLi across all pillars of your indirect material supply chain.</p>
+        </div>
+        <div class="review-grid">
+          {statTiles.map((tile) => (
+            <article class="review-tile">
+              <span>{tile}</span>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="faq-section" id="faq">
+        <div>
+          <h2>Frequently asked questions.</h2>
+          <p>Contact us if you still have unanswered questions or would like to find out more about how we can help your business.</p>
+        </div>
+        <div class="faq-list">
+          {faqs.map((item) => (
+            <details>
+              <summary>{item.question}</summary>
+              <p>{item.answer}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer-shell">
+      <p>Lexin Solutions helps asset intensive industries optimize indirect material supply chains from demand signal to inventory to supply.</p>
+      <nav>
+        <a href="https://www.lexinsolutions.com/trust">Trust Center</a>
+        <a href="https://www.lexinsolutions.com/">Lexin Solutions</a>
+        <a href="mailto:info@lexinsolutions.com">Contact</a>
+      </nav>
+    </footer>
+
+    <script is:inline>
+      window.addEventListener("DOMContentLoaded", () => {
+        const featureToggle = document.querySelector("[data-feature-toggle]");
+        const featureList = document.querySelector("[data-feature-list]");
+        const featureFade = document.querySelector("[data-feature-fade]");
+
+        featureToggle?.addEventListener("click", () => {
+          const expanded = featureList?.classList.toggle("is-expanded");
+          featureFade?.classList.toggle("is-expanded", Boolean(expanded));
+          featureToggle.textContent = expanded ? "Show fewer features" : "View all features";
+        });
+
+        const slides = Array.from(document.querySelectorAll("[data-slide]"));
+        const thumbs = Array.from(document.querySelectorAll("[data-slide-thumb]"));
+        const previous = document.querySelector("[data-slide-prev]");
+        const next = document.querySelector("[data-slide-next]");
+        let activeSlide = 0;
+
+        function showSlide(index) {
+          activeSlide = (index + slides.length) % slides.length;
+          slides.forEach((slide, slideIndex) => {
+            slide.classList.toggle("is-active", slideIndex === activeSlide);
+            slide.setAttribute("aria-hidden", slideIndex === activeSlide ? "false" : "true");
+          });
+          thumbs.forEach((thumb, thumbIndex) => {
+            thumb.classList.toggle("is-active", thumbIndex === activeSlide);
+          });
+        }
+
+        thumbs.forEach((thumb, index) => {
+          thumb.addEventListener("click", () => showSlide(index));
+        });
+        previous?.addEventListener("click", () => showSlide(activeSlide - 1));
+        next?.addEventListener("click", () => showSlide(activeSlide + 1));
+      });
+    </script>
+  </body>
+</html>
