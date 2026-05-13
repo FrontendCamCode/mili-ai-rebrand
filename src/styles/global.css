@@ -24,7 +24,7 @@ html {
 
 body {
   margin: 0;
-  background: var(--paper);
+  background: var(--white);
   color: var(--ink);
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 16px;
@@ -358,7 +358,7 @@ h3 {
   padding: 18px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: #f8fbfc;
+  background: var(--white);
 }
 
 .hero-quote blockquote {
@@ -672,26 +672,20 @@ h3 {
 }
 
 .photo-placeholder {
-  background:
-    radial-gradient(circle at 70% 25%, rgba(255, 255, 255, 0.9) 0 15%, transparent 16%),
-    linear-gradient(135deg, #d7e2e7, #eff4f6);
+  background: linear-gradient(135deg, #eef7d4, #d4eddf);
 }
 
 .tone-2 {
-  background:
-    radial-gradient(circle at 38% 26%, rgba(255, 255, 255, 0.9) 0 15%, transparent 16%),
-    linear-gradient(135deg, #dff0e9, #edf2f5);
+  background: linear-gradient(135deg, #d4eddf, #eef7d4);
 }
 
 .tone-3 {
-  background:
-    radial-gradient(circle at 40% 74%, rgba(255, 255, 255, 0.9) 0 18%, transparent 19%),
-    linear-gradient(135deg, #d7e2e7, #cfe9ef);
+  background: linear-gradient(135deg, #e6f4c8, #daeee0);
 }
 
 .steps-section {
   padding: 76px 28px;
-  background: var(--soft);
+  background: var(--white);
 }
 
 .steps-section .section-heading,
@@ -716,9 +710,7 @@ h3 {
   min-height: 220px;
   margin: 0;
   border-radius: 0;
-  background:
-    radial-gradient(circle at 50% 30%, rgba(149, 201, 61, 0.28), transparent 32%),
-    linear-gradient(135deg, #f8fafc, #dce7ec);
+  background: linear-gradient(135deg, #eef7d4, #d4eddf);
 }
 
 .step-visual span {
@@ -815,7 +807,7 @@ h3 {
   max-width: 1220px;
   margin: 0 auto;
   padding: 76px 28px;
-  background: #f1f5f7;
+  background: var(--white);
 }
 
 .community-collage {
