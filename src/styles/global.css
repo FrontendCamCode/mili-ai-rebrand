@@ -1090,7 +1090,7 @@ details p {
 
   .slider-shell {
     width: 100%;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 1 / 1;
   }
 
   .hero-quote {
@@ -1151,7 +1151,7 @@ details p {
     width: 100%;
     gap: 6px;
     overflow: visible;
-    padding: 8px 0 0;
+    padding: 8px 20px 0;
   }
 
   .thumb-strip button {
