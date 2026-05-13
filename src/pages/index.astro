@@ -121,6 +121,27 @@ const featureCards = [
   },
 ];
 
+const allFeatures = [
+  { label: "Material Search", icon: icons.search },
+  { label: "Material Creation", icon: icons.boxes },
+  { label: "Material Extension", icon: icons.database },
+  { label: "Bulk Enrichment", icon: icons.checklist },
+  { label: "ROP & ROQ Calculator", icon: icons.chart },
+  { label: "Lead Time Calculator", icon: icons.clock },
+  { label: "Material Details", icon: icons.database },
+  { label: "Flag for Deletion", icon: icons.shield },
+  { label: "Free Text Monitor", icon: icons.search },
+  { label: "BOM Monitor", icon: icons.boxes },
+  { label: "Duplicate Monitor", icon: icons.checklist },
+  { label: "Criticality Calculator", icon: icons.settings },
+  { label: "Supplier Scorecard", icon: icons.chart, soon: true },
+  { label: "Spend Analytics", icon: icons.database, soon: true },
+  { label: "MRO Analytics", icon: icons.chart, soon: true },
+  { label: "Contract Management", icon: icons.checklist, soon: true },
+  { label: "Part Interchangeability", icon: icons.boxes, soon: true },
+  { label: "Vendor Performance", icon: icons.shield, soon: true },
+];
+
 const steps = [
   { title: "Connect", copy: "A baseline ERP or CMMS connection can be completed in hours with pre-built connectors and APIs." },
   { title: "Pilot", copy: "Lexin spins up a dedicated MiLi instance, populates it with your data, and walks your team through the modules." },
@@ -318,22 +339,24 @@ const faqs = [
       </section>
       </div>
 
-      <section class="benefits-section" id="features">
-        <div class="section-heading">
-          <h2>Designed to support how you work.</h2>
-          <p>MiLi helps you manage, monitor, and maintain your indirect material supply chain every step of the way.</p>
+      <section class="features-section" id="features">
+        <div class="section-heading features-heading">
+          <h2>Everything inside MiLi.</h2>
+          <p>Modular solutions designed for every indirect material supply chain challenge.</p>
         </div>
-        <div class="icon-row">
+        <div class="icon-row outcomes-row">
           {outcomes.map((benefit) => <article><span set:html={benefit.icon}></span><b>{benefit.label}</b></article>)}
         </div>
-        <div class="feature-grid">
-          {featureCards.map((card, index) => (
-            <article>
-              <div class={`photo-placeholder tone-${index + 1}`}></div>
-              <h3>{card.title}</h3>
-              <p>{card.copy}</p>
-            </article>
-          ))}
+        <div class="features-grid-outer">
+          <div class="features-grid">
+            {allFeatures.map((feature) => (
+              <article class:list={["feature-cell", { "is-soon": feature.soon }]}>
+                <span set:html={feature.icon}></span>
+                <b>{feature.label}</b>
+                {feature.soon && <small>Soon</small>}
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
