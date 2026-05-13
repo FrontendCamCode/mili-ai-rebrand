@@ -639,8 +639,33 @@ h3 {
 }
 
 .features-grid-outer {
+  position: relative;
+  max-width: 1220px;
+  margin: 0 auto;
+  overflow: hidden;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
+}
+
+.features-grid-outer::before,
+.features-grid-outer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 14%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.features-grid-outer::before {
+  left: 0;
+  background: linear-gradient(to right, var(--white) 10%, transparent);
+}
+
+.features-grid-outer::after {
+  right: 0;
+  background: linear-gradient(to left, var(--white) 10%, transparent);
 }
 
 .features-grid {
