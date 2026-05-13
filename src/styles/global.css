@@ -54,6 +54,11 @@ h1,
 h2,
 h3 {
   letter-spacing: -0.045em;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
 }
 
 h1 {
@@ -466,7 +471,7 @@ h3 {
 }
 
 .mini-feature-grid.is-expanded {
-  max-height: 720px;
+  max-height: 2000px;
 }
 
 .mini-feature {
@@ -1025,7 +1030,10 @@ details p {
   }
 
   .icon-row {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .feature-grid,
@@ -1068,12 +1076,12 @@ details p {
   .social-proof,
   .reviews-section,
   .faq-section {
-    padding: 42px 16px;
+    padding: 48px 20px;
   }
 
   .hero-shell {
     gap: 22px;
-    padding: 0 0 42px;
+    padding: 0 0 48px;
   }
 
   .media-column {
@@ -1086,13 +1094,13 @@ details p {
   }
 
   .hero-quote {
-    width: calc(100% - 16px);
-    margin-top: 8px;
+    width: calc(100% - 40px);
+    margin: 10px 20px 0;
   }
 
   .offer-column {
-    width: calc(100% - 16px);
-    padding: 8px;
+    width: 100%;
+    padding: 8px 20px 16px;
   }
 
   .product-hero {
@@ -1108,16 +1116,33 @@ details p {
 
   .hero-card-copy {
     min-height: 42svh;
+    padding: clamp(20px, 5vw, 32px);
   }
 
   .feature-stack {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 16px;
+  }
+
+  .feature-stack article {
+    padding: 12px;
   }
 
   .mini-feature-grid,
   .icon-row,
   .review-grid {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .icon-row {
+    gap: 16px;
+    margin-bottom: 36px;
+  }
+
+  .icon-row article {
+    font-size: 12px;
+    gap: 8px;
   }
 
   .thumb-strip {
@@ -1150,17 +1175,30 @@ details p {
   }
 
   .community-collage strong {
-    font-size: 20px;
+    font-size: 18px;
+    line-height: 1.2;
+  }
+
+  .section-heading {
+    margin-bottom: 28px;
   }
 
   .faq-section {
     gap: 24px;
   }
+
+  .faq-section h2 {
+    font-size: clamp(22px, 5vw, 30px);
+  }
 }
 
 @media (max-width: 460px) {
   h1 {
-    font-size: 40px;
+    font-size: 36px;
+  }
+
+  h2 {
+    font-size: 26px;
   }
 
   .nav-cta {
@@ -1171,11 +1209,18 @@ details p {
   .mini-feature-grid,
   .icon-row,
   .review-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .offer-column h2 {
+    font-size: 28px;
+  }
+
+  .feature-stack {
     grid-template-columns: 1fr;
   }
 
-  .offer-column h2,
-  h2 {
-    font-size: 30px;
+  .hero-card-copy {
+    min-height: 50svh;
   }
 }
