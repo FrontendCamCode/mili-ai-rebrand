@@ -554,9 +554,13 @@ h3 {
   display: block;
 }
 
-.bonus-box span {
+.bonus-box > span {
   margin-top: 5px;
   color: var(--muted);
+}
+
+.bonus-box .primary-cta {
+  margin-top: 14px;
 }
 
 .primary-cta {
