@@ -22,6 +22,10 @@ const icons = {
     '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"></path><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"></path></svg>',
   checklist:
     '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6h11"></path><path d="M9 12h11"></path><path d="M9 18h11"></path><path d="M5 6l0 .01"></path><path d="M5 12l0 .01"></path><path d="M5 18l0 .01"></path></svg>',
+  sparkles:
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 18a2 2 0 0 1 2 2a2 2 0 0 1 2 -2a2 2 0 0 1 -2 -2a2 2 0 0 1 -2 2zm0 -12a2 2 0 0 1 2 2a2 2 0 0 1 2 -2a2 2 0 0 1 -2 -2a2 2 0 0 1 -2 2zm-7 1a6 6 0 0 1 6 6a6 6 0 0 1 6 -6a6 6 0 0 1 -6 -6a6 6 0 0 1 -6 6z"></path></svg>',
+  cpu:
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2"></rect><path d="M9 9h6v6h-6z"></path><path d="M3 10h3"></path><path d="M3 14h3"></path><path d="M10 3v3"></path><path d="M14 3v3"></path><path d="M21 10h-3"></path><path d="M21 14h-3"></path><path d="M14 21v-3"></path><path d="M10 21v-3"></path></svg>',
 };
 
 const heroFeatures = [
@@ -58,6 +62,17 @@ const heroSlides = [
       ["Eliminate waste", "Identify excess stock, duplicate spend, and inventory that isn't working for you."],
       ["Connect easily", "Plug into your existing ERP or CMMS without custom code or a long IT project."],
       ["Stay in control", "Every change goes through configurable approval workflows before it posts back."],
+    ],
+  },
+  {
+    eyebrow: "MiLi Mind",
+    title: "Every tool, callable by your AI agents.",
+    icon: icons.sparkles,
+    features: [
+      ["MiLi Mind", "Our native AI harness — ask questions and trigger workflows in plain language."],
+      ["Any platform", "Plug MiLi into ChatGPT, Claude, Gemini, or any LLM via our open tool API."],
+      ["Agentic tools", "Every module exposes discrete actions your AI agents can call directly."],
+      ["Autonomous", "Automate routine materials decisions without human intervention."],
     ],
   },
   {
@@ -142,6 +157,13 @@ const allFeatures = [
   { label: "Duplicate Monitor",       icon: icons.checklist },
   { label: "Criticality Calculator",  icon: icons.settings },
   { label: "Vendor Performance",      icon: icons.shield,    soon: true },
+
+  { label: "Predictive Reorder",      icon: icons.chart,     soon: true },
+  { label: "MiLi Mind",               icon: icons.sparkles,  ai: true },
+  { label: "AI Tool API",             icon: icons.cpu,       ai: true },
+  { label: "Agentic Workflows",       icon: icons.sparkles,  ai: true },
+  { label: "AI Insights",             icon: icons.chart,     ai: true },
+  { label: "AI Procurement",          icon: icons.database,  soon: true },
 ];
 
 const steps = [
@@ -349,12 +371,38 @@ const faqs = [
         <div class="features-grid-outer">
           <div class="features-grid">
             {allFeatures.map((feature) => (
-              <article class:list={["feature-cell", { "is-soon": feature.soon }]}>
+              <article class:list={["feature-cell", { "is-soon": feature.soon, "is-ai": feature.ai }]}>
                 <span set:html={feature.icon}></span>
                 <b>{feature.label}</b>
                 {feature.soon && <small>Soon</small>}
               </article>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="ai-section">
+        <div class="ai-section-inner">
+          <div class="ai-section-head">
+            <h2>MiLi is AI-ready.</h2>
+            <p>Every capability in MiLi is exposed as a discrete, callable tool — so your AI agents can act on your materials data directly. Or use MiLi Mind, our native AI harness built right into the platform.</p>
+          </div>
+          <div class="ai-pillars">
+            <article class="ai-pillar">
+              <div class="ai-pillar-icon" set:html={icons.sparkles}></div>
+              <h3>MiLi Mind</h3>
+              <p>Our native AI harness. Ask questions, trigger workflows, and surface insights from your materials data — all in plain language, no training required.</p>
+            </article>
+            <article class="ai-pillar">
+              <div class="ai-pillar-icon" set:html={icons.cpu}></div>
+              <h3>Any AI platform</h3>
+              <p>Plug MiLi into ChatGPT, Claude, Gemini, or your own model. Every module ships with a clean tool API your AI agents can call directly.</p>
+            </article>
+            <article class="ai-pillar">
+              <div class="ai-pillar-icon" set:html={icons.settings}></div>
+              <h3>Agentic by design</h3>
+              <p>Search materials, enrich records, calculate reorder points, flag exceptions, route approvals — every action is callable autonomously, without human intervention.</p>
+            </article>
           </div>
         </div>
       </section>
