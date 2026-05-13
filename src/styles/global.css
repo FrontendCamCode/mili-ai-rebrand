@@ -273,6 +273,10 @@ h3 {
   font-size: 14px;
 }
 
+.subhead {
+  margin-bottom: 10px;
+}
+
 .feature-stack span,
 .subhead,
 .check-list,
