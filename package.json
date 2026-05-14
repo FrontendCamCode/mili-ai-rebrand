@@ -6,10 +6,15 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "studio": "sanity dev",
+    "studio:deploy": "sanity deploy"
   },
   "dependencies": {
-    "astro": "^4.16.18"
-  },
-  "devDependencies": {}
+    "@portabletext/to-html": "^5.0.2",
+    "@sanity/client": "^7.22.0",
+    "astro": "^4.16.18",
+    "sanity": "^5.25.0",
+    "styled-components": "^6.4.1"
+  }
 }
