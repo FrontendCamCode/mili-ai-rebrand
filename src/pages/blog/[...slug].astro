@@ -20,6 +20,22 @@ const allPosts = (await getCollection("blog"))
   .filter((p) => p.slug !== post.slug)
   .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())
   .slice(0, 3);
+
+const authors: Record<string, { initials: string; role: string; bio: string }> = {
+  "Justin Lester": {
+    initials: "JL",
+    role: "Co-founder, Lexin Solutions",
+    bio: "Justin brings deep operational expertise in EAM, CMMS, and maintenance management across asset-intensive industries. With 15+ years in the field, he specialises in connecting maintenance operations to supply chain strategy — and has spent his career helping organisations get more from the systems they already own.",
+  },
+  "Tim McLain": {
+    initials: "TM",
+    role: "Co-founder, Lexin Solutions",
+    bio: "Tim is a supply chain specialist with extensive experience in MRO materials management, procurement strategy, and ERP implementation. He has worked across mining, oil & gas, and heavy manufacturing helping organisations reduce working capital, eliminate free-text spend, and build supply chains that actually support maintenance.",
+  },
+};
+
+const authorName = post.data.author ?? "";
+const authorInfo = authors[authorName] ?? null;
 ---
 
 <SiteShell
@@ -29,12 +45,12 @@ const allPosts = (await getCollection("blog"))
 >
   <main>
     <section class="page-hero">
-      <div class="page-hero-inner page-hero-inner--narrow">
+      <div class="page-hero-inner">
         <p class="eyebrow">Article</p>
         <h1>{post.data.title}</h1>
         <p class="hero-lede">{post.data.description}</p>
         <div class="hero-meta">
-          {post.data.author && <span>{post.data.author}</span>}
+          {authorName && <span>{authorName}</span>}
           <time datetime={post.data.publishedAt.toISOString()}>
             {post.data.publishedAt.toLocaleDateString("en", { day: "numeric", month: "long", year: "numeric" })}
           </time>
@@ -43,11 +59,29 @@ const allPosts = (await getCollection("blog"))
       </div>
     </section>
 
-    <article class="prose-shell">
-      <div class="prose">
-        <Content />
+    <div class="article-shell">
+      <div class="article-body">
+        <article class="prose">
+          <Content />
+        </article>
+
+        <aside class="article-sidebar">
+          {authorInfo && (
+            <div class="author-card">
+              <p class="author-card-label">Written by</p>
+              <div class="author-avatar">
+                <div class="author-initials">{authorInfo.initials}</div>
+                <div>
+                  <p class="author-name">{authorName}</p>
+                  <p class="author-role">{authorInfo.role}</p>
+                </div>
+              </div>
+              <p class="author-bio">{authorInfo.bio}</p>
+            </div>
+          )}
+        </aside>
       </div>
-    </article>
+    </div>
 
     {allPosts.length > 0 && (
       <section class="related-section">
