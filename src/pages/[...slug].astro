@@ -1,0 +1,21 @@
+---
+import CmsPage from "../components/CmsPage.astro";
+import { getCmsPage, getCmsPages } from "../lib/sanity";
+
+export async function getStaticPaths() {
+  const pages = await getCmsPages();
+  return pages.map((page) => ({
+    params: { slug: page.slug },
+    props: { page },
+  }));
+}
+
+const slug = Astro.params.slug;
+const page = Astro.props.page ?? (slug ? await getCmsPage(slug) : undefined);
+
+if (!page) {
+  return Astro.redirect("/");
+}
+---
+
+<CmsPage page={page} />
