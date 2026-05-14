@@ -1,163 +1,52 @@
 ---
 import SiteShell from "./SiteShell.astro";
-import { getListingPages, getRelatedPages, type CmsPage } from "../lib/sanity";
+import type { StaticPage } from "../data/sitemap";
 
 export interface Props {
-  page: CmsPage;
+  page: StaticPage;
 }
 
 const { page } = Astro.props;
-const family =
-  page.kind === "article"
-    ? "article"
-    : page.kind === "podcastEpisode"
-      ? "podcast"
-      : page.kind === "resource"
-        ? "resource"
-        : page.kind === "listing"
-          ? "listing"
-          : page.slug === "contact"
-            ? "contact"
-            : page.slug === "trust"
-              ? "trust"
-              : page.slug === "mili"
-                ? "feature"
-                : "page";
-
-const isListing = family === "listing";
-const listingItems = isListing ? getListingPages(page.slug) : [];
-const related = getRelatedPages(page.kind, page.slug);
 const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 const href = (path = "") => (/^(https?:|mailto:|#)/.test(path) ? path : `${base}${path.replace(/^\//, "")}`);
+
+const isResource = page.kind === "resource";
+const heroVariant =
+  page.slug === "trust"   ? "page-hero--trust"   :
+  page.slug === "mili"    ? "page-hero--feature"  :
+  (isResource || page.slug === "contact") ? "page-hero--light" :
+  "";
+
+const ctaBand = page.slug !== "success" && page.slug !== "popcorn";
 ---
 
-<SiteShell title={page.seoTitle ?? page.title} description={page.description}>
-  <main class:list={["cms-page", `family-${family}`]}>
-    <section class:list={["cms-hero", `variant-${family}`]}>
-      <div class="cms-hero-inner">
-        <div>
-          {page.eyebrow && <p class="cms-eyebrow">{page.eyebrow}</p>}
-          <h1>{page.title}</h1>
-          {page.description && <p class="cms-lede">{page.description}</p>}
-          {(page.duration || page.author || page.publishedAt) && (
-            <div class="cms-meta-row">
-              {page.duration && <span>{page.duration}</span>}
-              {page.author && <span>{page.author}</span>}
-              {page.publishedAt && <span>{new Date(page.publishedAt).toLocaleDateString("en", { day: "numeric", month: "short", year: "numeric" })}</span>}
-            </div>
-          )}
-          {page.ctaLabel && <a class="primary-cta cms-cta" href={href(page.ctaHref ?? "/contact")}>{page.ctaLabel}</a>}
-        </div>
-        <div class="cms-visual" aria-hidden="true">
-          <span>{family}</span>
-        </div>
+<SiteShell title={page.title} description={page.description}>
+  <main>
+    <section class:list={["page-hero", heroVariant]}>
+      <div class="page-hero-inner">
+        {page.eyebrow && <p class="eyebrow">{page.eyebrow}</p>}
+        <h1>{page.title}</h1>
+        {page.description && <p class="hero-lede">{page.description}</p>}
+        {page.ctaLabel && (
+          <a
+            class:list={["btn", heroVariant === "page-hero--light" ? "btn-dark" : "btn-lime"]}
+            style="margin-top:28px;"
+            href={href(page.ctaHref ?? "contact")}
+          >
+            {page.ctaLabel}
+          </a>
+        )}
       </div>
     </section>
 
-    {page.embedUrl && (
-      <section class="cms-content">
-        <div class="cms-download-card">
+    {ctaBand && (
+      <section class="cta-band">
+        <div class="cta-band-inner">
           <div>
-            <p class="cms-eyebrow">Listen</p>
-            <h2>Episode Player</h2>
-            <p>Use the embedded episode link supplied in Sanity.</p>
+            <h2>Ready to see MiLi with your data?</h2>
+            <p>A dedicated pilot environment loaded with your real inventory — so your team can see exactly what MiLi finds before committing.</p>
           </div>
-          <a class="primary-cta cms-cta" href={page.embedUrl}>Open episode</a>
-        </div>
-      </section>
-    )}
-
-    {page.downloadUrl && (
-      <section class="cms-content">
-        <div class="cms-download-card">
-          <div>
-            <p class="cms-eyebrow">Download</p>
-            <h2>{page.title}</h2>
-            <p>{page.description}</p>
-          </div>
-          <a class="primary-cta cms-cta" href={page.downloadUrl}>{page.ctaLabel ?? "Download"}</a>
-        </div>
-      </section>
-    )}
-
-    {!!page.takeaways?.length && (
-      <section class="cms-content">
-        <article class="cms-section">
-          <p class="cms-eyebrow">Key takeaways</p>
-          <h2>What this episode covers</h2>
-          <div class="cms-card-grid columns-3">
-            {page.takeaways.map((takeaway) => (
-              <article>
-                <h3>{takeaway}</h3>
-              </article>
-            ))}
-          </div>
-        </article>
-      </section>
-    )}
-
-    {!!page.sections?.length && (
-      <section class="cms-content">
-        {page.sections.map((section) => (
-          <article class="cms-section">
-            {section.eyebrow && <p class="cms-eyebrow">{section.eyebrow}</p>}
-            {section.heading && <h2>{section.heading}</h2>}
-            {section.body && <p>{section.body}</p>}
-            {!!section.items?.length && (
-              <div class="cms-card-grid columns-3">
-                {section.items.map((item) => (
-                  <article>
-                    <h3>{item.title}</h3>
-                    {item.text && <p>{item.text}</p>}
-                  </article>
-                ))}
-              </div>
-            )}
-          </article>
-        ))}
-      </section>
-    )}
-
-    {!page.sections?.length && !page.takeaways?.length && !isListing && (
-      <section class="cms-content">
-        <article class="cms-section">
-          <p class="cms-eyebrow">Content managed in Sanity</p>
-          <h2>{family === "article" ? "Article body" : family === "podcast" ? "Show notes" : "Page content"}</h2>
-          <p>Add content in Sanity and Codex will keep the Astro template design consistent.</p>
-        </article>
-      </section>
-    )}
-
-    {isListing && (
-      <section class="cms-index">
-        <div class="section-heading">
-          <h2>{page.slug === "blog" ? "Latest Articles" : "Podcast Episodes"}</h2>
-          <p>These entries are seeded from the current sitemap and can be replaced by Sanity content.</p>
-        </div>
-        <div class:list={["cms-list-grid", page.slug === "podcast" ? "episode-list" : "article-list"]}>
-          {listingItems.map((item) => (
-            <a href={href(item.slug)}>
-              <span>{item.eyebrow}</span>
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
-            </a>
-          ))}
-        </div>
-      </section>
-    )}
-
-    {!isListing && related.length > 0 && (
-      <section class="cms-index">
-        <div class="section-heading">
-          <h2>{family === "article" ? "More Articles" : family === "podcast" ? "More Episodes" : "Related Pages"}</h2>
-        </div>
-        <div class="cms-list-grid compact">
-          {related.slice(0, 3).map((item) => (
-            <a href={href(item.slug)}>
-              <span>{item.eyebrow}</span>
-              <h3>{item.title}</h3>
-            </a>
-          ))}
+          <a class="btn btn-lime" href="mailto:info@lexinsolutions.com">Book a pilot</a>
         </div>
       </section>
     )}

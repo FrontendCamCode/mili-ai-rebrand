@@ -1,5 +1,7 @@
 ---
 import "../styles/global.css";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
 
 const icons = {
   arrowLeft:
@@ -241,17 +243,32 @@ const faqs = [
 ];
 
 const assetBase = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const siteUrl = import.meta.env.SITE ?? "";
+const canonicalUrl = `${siteUrl}${assetBase}`;
+const ogDescription = "MiLi gives asset-intensive operations a single trusted place to manage, clean, and optimize the materials that keep their business running.";
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="MiLi is Lexin Solutions' indirect material supply chain platform for asset intensive industries."
-    />
-    <title>MiLi | Lexin Solutions</title>
+    <meta name="description" content={ogDescription} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" href={`${assetBase}favicon.svg`} type="image/svg+xml" />
+
+    <meta property="og:title" content="MiLi — Indirect Material Supply Chain Platform | Lexin Solutions" />
+    <meta property="og:description" content={ogDescription} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={`${siteUrl}${assetBase}images/lexin-logo-reverse.png`} />
+    <meta property="og:site_name" content="Lexin Solutions" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="MiLi — Indirect Material Supply Chain Platform | Lexin Solutions" />
+    <meta name="twitter:description" content={ogDescription} />
+    <meta name="twitter:image" content={`${siteUrl}${assetBase}images/lexin-logo-reverse.png`} />
+
+    <title>MiLi — Indirect Material Supply Chain Platform | Lexin Solutions</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -260,20 +277,7 @@ const assetBase = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_
     />
   </head>
   <body>
-    <header class="top-bar">
-      <div class="top-bar-inner">
-        <a class="brand" href="/" aria-label="Lexin Solutions home">
-          <img src={`${assetBase}images/lexin-logo-reverse.png`} alt="Lexin Solutions" />
-        </a>
-        <nav aria-label="Primary navigation">
-          <a href="#features">Features</a>
-          <a href="#pilot">Pilot</a>
-          <a href="#compare">Compare</a>
-          <a href="#faq">FAQ</a>
-        </nav>
-        <a class="nav-cta" href="mailto:info@lexinsolutions.com">Contact us</a>
-      </div>
-    </header>
+    <Nav />
 
     <main>
       <div class="hero-bg">
@@ -463,17 +467,27 @@ const assetBase = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_
         </div>
       </section>
 
-      <section class="reviews-section">
+      <section class="lexin-way-section">
         <div class="section-heading">
           <h2>The Lexin Way.</h2>
-          <p>We do not just sell you software. We enable your team to realize the benefits of MiLi across all pillars of your indirect material supply chain.</p>
+          <p>We measure ourselves by the outcomes our clients achieve — not the software licenses we sell.</p>
         </div>
-        <div class="review-grid">
-          {statTiles.map((tile) => (
-            <article class="review-tile">
-              <span>{tile}</span>
-            </article>
-          ))}
+        <div class="lexin-way-grid">
+          <article>
+            <div class="lexin-way-icon" set:html={icons.chart}></div>
+            <h3>Outcomes before everything</h3>
+            <p>We build the business case with you, not for you. If MiLi is not the right fit for your operation, we will tell you before you sign anything.</p>
+          </article>
+          <article>
+            <div class="lexin-way-icon" set:html={icons.shield}></div>
+            <h3>Your instance, your data</h3>
+            <p>Every client gets a dedicated MiLi environment. Your data is isolated from day one, stays in-region, and never touches another client's stack.</p>
+          </article>
+          <article>
+            <div class="lexin-way-icon" set:html={icons.sparkles}></div>
+            <h3>Capability uplift, not dependency</h3>
+            <p>We want your team to own the outcomes. We build operational knowledge into your people — not a reliance on external consultants.</p>
+          </article>
         </div>
       </section>
 
@@ -493,16 +507,7 @@ const assetBase = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_
       </section>
     </main>
 
-    <div class="footer-bg">
-    <footer class="footer-shell">
-      <p>Lexin Solutions helps asset intensive industries optimize indirect material supply chains from demand signal to inventory to supply.</p>
-      <nav>
-        <a href="https://www.lexinsolutions.com/trust">Trust Center</a>
-        <a href="https://www.lexinsolutions.com/">Lexin Solutions</a>
-        <a href="mailto:info@lexinsolutions.com">Contact</a>
-      </nav>
-    </footer>
-    </div>
+    <Footer />
 
     <script is:inline>
       window.addEventListener("DOMContentLoaded", () => {

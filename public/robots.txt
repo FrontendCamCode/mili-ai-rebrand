@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://FrontendCamCode.github.io/mili-ai-rebrand/sitemap-index.xml

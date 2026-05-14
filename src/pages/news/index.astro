@@ -1,0 +1,50 @@
+---
+import { getCollection } from "astro:content";
+import SiteShell from "../../components/SiteShell.astro";
+
+const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const href = (path: string) => `${base}${path.replace(/^\//, "")}`;
+
+const items = (await getCollection("news")).sort(
+  (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime()
+);
+---
+
+<SiteShell
+  title="News"
+  description="The latest news and announcements from Lexin Solutions and the MiLi platform."
+>
+  <main>
+    <section class="page-hero">
+      <div class="page-hero-inner page-hero-inner--wide">
+        <p class="eyebrow">News</p>
+        <h1>Latest from Lexin Solutions.</h1>
+        <p class="hero-lede">Product announcements, company news, and updates from the Lexin team.</p>
+      </div>
+    </section>
+
+    <section class="listing-shell">
+      {items.length === 0 ? (
+        <div class="listing-empty">
+          <p>No news items yet. Check back soon.</p>
+        </div>
+      ) : (
+        <div class="listing-grid">
+          {items.map((item) => (
+            <a href={href(`news/${item.slug}`)} class="listing-card">
+              <span class="listing-eyebrow">News</span>
+              <h2>{item.data.title}</h2>
+              <p>{item.data.description}</p>
+              <footer class="listing-card-meta">
+                <time datetime={item.data.publishedAt.toISOString()}>
+                  {item.data.publishedAt.toLocaleDateString("en", { day: "numeric", month: "short", year: "numeric" })}
+                </time>
+                {item.data.source && <span>{item.data.source}</span>}
+              </footer>
+            </a>
+          ))}
+        </div>
+      )}
+    </section>
+  </main>
+</SiteShell>

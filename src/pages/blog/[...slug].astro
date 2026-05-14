@@ -1,0 +1,69 @@
+---
+import { getCollection } from "astro:content";
+import SiteShell from "../../components/SiteShell.astro";
+
+const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const href = (path: string) => `${base}${path.replace(/^\//, "")}`;
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const allPosts = (await getCollection("blog"))
+  .filter((p) => p.slug !== post.slug)
+  .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())
+  .slice(0, 3);
+---
+
+<SiteShell
+  title={post.data.title}
+  description={post.data.description}
+  canonical={`${import.meta.env.SITE ?? ""}${base}blog/${post.slug}`}
+>
+  <main>
+    <section class="page-hero">
+      <div class="page-hero-inner">
+        <p class="eyebrow">Article</p>
+        <h1>{post.data.title}</h1>
+        <p class="hero-lede">{post.data.description}</p>
+        <div class="hero-meta">
+          {post.data.author && <span>{post.data.author}</span>}
+          <time datetime={post.data.publishedAt.toISOString()}>
+            {post.data.publishedAt.toLocaleDateString("en", { day: "numeric", month: "long", year: "numeric" })}
+          </time>
+          {post.data.tags?.map((tag) => <span class="hero-meta-pill">{tag}</span>)}
+        </div>
+      </div>
+    </section>
+
+    <article class="prose-shell">
+      <div class="prose">
+        <Content />
+      </div>
+    </article>
+
+    {allPosts.length > 0 && (
+      <section class="related-section">
+        <div class="related-inner">
+          <h2>More Articles</h2>
+          <div class="listing-grid listing-grid--compact">
+            {allPosts.map((p) => (
+              <a href={href(`blog/${p.slug}`)} class="listing-card">
+                <span class="listing-eyebrow">Article</span>
+                <h3>{p.data.title}</h3>
+                <p>{p.data.description}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+  </main>
+</SiteShell>

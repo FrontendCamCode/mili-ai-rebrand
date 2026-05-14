@@ -1,0 +1,124 @@
+---
+const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const href = (path: string) =>
+  /^(https?:|mailto:|#)/.test(path) ? path : `${base}${path.replace(/^\//, "")}`;
+
+const chevron = `<svg class="nav-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>`;
+---
+
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <a class="brand" href={base} aria-label="Lexin Solutions home">
+      <img src={href("images/lexin-logo-reverse.png")} alt="Lexin Solutions" width="164" height="36" />
+    </a>
+
+    <nav aria-label="Primary navigation">
+
+      <!-- MiLi dropdown -->
+      <div class="nav-item">
+        <a href={href("mili")} class="nav-trigger">MiLi <Fragment set:html={chevron} /></a>
+        <div class="nav-dropdown">
+          <a href={href("mili")}>MiLi Overview</a>
+          <a href={href("mili#features")}>All Features</a>
+          <a href={href("mili#pilot")}>Book a Pilot</a>
+          <a href={href("mili#compare")}>How it Compares</a>
+          <div class="nav-dropdown-divider"></div>
+          <a href={href("trust")}>Trust &amp; Security</a>
+        </div>
+      </div>
+
+      <!-- Resources dropdown -->
+      <div class="nav-item">
+        <a href={href("blog")} class="nav-trigger">Resources <Fragment set:html={chevron} /></a>
+        <div class="nav-dropdown">
+          <p class="nav-dropdown-label">Content</p>
+          <a href={href("blog")}>Articles</a>
+          <a href={href("podcast")}>Podcast</a>
+          <a href={href("news")}>News</a>
+          <div class="nav-dropdown-divider"></div>
+          <p class="nav-dropdown-label">Guides</p>
+          <a href={href("resources/capability-uplift")}>Capability Uplift</a>
+          <a href={href("resources/scaas")}>Supply Chain as a Service</a>
+          <a href={href("resources/maintenance-health-check")}>Maintenance Health Check</a>
+          <a href={href("resources/supply-chain-review")}>Supply Chain Review</a>
+        </div>
+      </div>
+
+      <!-- Company dropdown -->
+      <div class="nav-item">
+        <a href={href("contact")} class="nav-trigger">Company <Fragment set:html={chevron} /></a>
+        <div class="nav-dropdown">
+          <a href="https://www.lexinsolutions.com/" target="_blank" rel="noopener">About Lexin Solutions</a>
+          <a href={href("trust")}>Trust Center</a>
+          <a href={href("pilot")}>Request a Pilot</a>
+          <div class="nav-dropdown-divider"></div>
+          <a href="mailto:info@lexinsolutions.com">info@lexinsolutions.com</a>
+        </div>
+      </div>
+
+    </nav>
+
+    <div class="nav-end">
+      <a class="nav-cta" href={href("contact")}>Contact us</a>
+      <button
+        class="nav-hamburger"
+        type="button"
+        aria-label="Open menu"
+        aria-expanded="false"
+        data-hamburger
+      >
+        <svg class="icon-hamburger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+          <path d="M3 6h18M3 12h18M3 18h18"/>
+        </svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+          <path d="M18 6L6 18M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile nav drawer -->
+  <nav class="mobile-nav" aria-label="Mobile navigation" data-mobile-nav>
+    <p class="mobile-nav-label">Platform</p>
+    <a href={href("mili")}>MiLi Overview</a>
+    <a href={href("mili#features")}>All Features</a>
+    <a href={href("mili#pilot")}>Book a Pilot</a>
+    <a href={href("mili#compare")}>How it Compares</a>
+
+    <p class="mobile-nav-label">Content</p>
+    <a href={href("blog")}>Articles</a>
+    <a href={href("podcast")}>Podcast</a>
+    <a href={href("news")}>News</a>
+
+    <p class="mobile-nav-label">Guides</p>
+    <a href={href("resources/capability-uplift")}>Capability Uplift</a>
+    <a href={href("resources/scaas")}>Supply Chain as a Service</a>
+
+    <p class="mobile-nav-label">Company</p>
+    <a href={href("trust")}>Trust Center</a>
+    <a href="https://www.lexinsolutions.com/" target="_blank" rel="noopener">Lexin Solutions</a>
+
+    <a href={href("contact")} class="mobile-nav-cta">Contact us</a>
+  </nav>
+</header>
+
+<script is:inline>
+  (function () {
+    var btn = document.querySelector("[data-hamburger]");
+    var nav = document.querySelector("[data-mobile-nav]");
+    if (!btn || !nav) return;
+
+    btn.addEventListener("click", function () {
+      var open = btn.getAttribute("aria-expanded") === "true";
+      btn.setAttribute("aria-expanded", open ? "false" : "true");
+      nav.classList.toggle("is-open", !open);
+    });
+
+    nav.querySelectorAll("a").forEach(function (a) {
+      a.addEventListener("click", function () {
+        btn.setAttribute("aria-expanded", "false");
+        nav.classList.remove("is-open");
+      });
+    });
+  })();
+</script>
