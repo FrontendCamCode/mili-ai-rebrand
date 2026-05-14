@@ -2603,11 +2603,12 @@ details p {
 .page-hero--light         { background: var(--hero-light); color: var(--ink); }
 
 .page-hero-inner {
-  max-width: var(--prose-max);
+  max-width: var(--page-max);   /* always matches nav width */
   margin: 0 auto;
   padding: clamp(60px, 8vw, 96px) var(--page-pad);
 }
-.page-hero-inner--wide    { max-width: var(--page-max); }
+.page-hero-inner--wide    { max-width: var(--page-max); }  /* compat alias */
+.page-hero-inner--narrow  { max-width: 760px; }            /* article/episode detail heroes */
 .page-hero-inner--center  { text-align: center; }
 
 /* Eyebrow label — unified across all heroes and sections */
