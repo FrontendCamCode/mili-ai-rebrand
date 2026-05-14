@@ -208,7 +208,6 @@ h3 {
   flex-shrink: 0;
 }
 
-.nav-item:hover .nav-chevron,
 .nav-item:focus-within .nav-chevron {
   transform: rotate(180deg);
   opacity: 1;
@@ -217,11 +216,12 @@ h3 {
 /* Dropdown panel */
 .nav-dropdown {
   position: absolute;
-  top: calc(100% + 6px);
+  top: 100%;
   left: 50%;
-  transform: translateX(-50%) translateY(-6px);
+  transform: translateX(-50%) translateY(-4px);
   min-width: 220px;
-  padding: 8px;
+  /* padding-top bridges the gap so the hover area is continuous */
+  padding: 6px 8px 8px;
   background: #0d2d38;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--r-md);
@@ -232,11 +232,24 @@ h3 {
   z-index: 100;
 }
 
-.nav-item:hover .nav-dropdown,
+/* JS adds .is-open; :focus-within keeps keyboard nav working */
+.nav-item.is-open .nav-dropdown,
 .nav-item:focus-within .nav-dropdown {
   opacity: 1;
   pointer-events: auto;
   transform: translateX(-50%) translateY(0);
+}
+
+.nav-item.is-open .nav-chevron,
+.nav-item:focus-within .nav-chevron {
+  transform: rotate(180deg);
+  opacity: 1;
+}
+
+.nav-item.is-open .nav-trigger,
+.nav-item:focus-within .nav-trigger {
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .nav-dropdown a {

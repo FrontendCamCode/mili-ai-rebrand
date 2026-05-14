@@ -104,21 +104,60 @@ const chevron = `<svg class="nav-chevron" viewBox="0 0 16 16" fill="none" stroke
 
 <script is:inline>
   (function () {
+    /* ── Hamburger / mobile drawer ── */
     var btn = document.querySelector("[data-hamburger]");
-    var nav = document.querySelector("[data-mobile-nav]");
-    if (!btn || !nav) return;
+    var mobileNav = document.querySelector("[data-mobile-nav]");
+    if (btn && mobileNav) {
+      btn.addEventListener("click", function () {
+        var open = btn.getAttribute("aria-expanded") === "true";
+        btn.setAttribute("aria-expanded", open ? "false" : "true");
+        mobileNav.classList.toggle("is-open", !open);
+      });
+      mobileNav.querySelectorAll("a").forEach(function (a) {
+        a.addEventListener("click", function () {
+          btn.setAttribute("aria-expanded", "false");
+          mobileNav.classList.remove("is-open");
+        });
+      });
+    }
 
-    btn.addEventListener("click", function () {
-      var open = btn.getAttribute("aria-expanded") === "true";
-      btn.setAttribute("aria-expanded", open ? "false" : "true");
-      nav.classList.toggle("is-open", !open);
+    /* ── Desktop dropdowns ── */
+    document.querySelectorAll(".nav-item").forEach(function (item) {
+      var timer = null;
+
+      function open() {
+        clearTimeout(timer);
+        /* close any other open items first */
+        document.querySelectorAll(".nav-item.is-open").forEach(function (other) {
+          if (other !== item) other.classList.remove("is-open");
+        });
+        item.classList.add("is-open");
+      }
+
+      function close() {
+        clearTimeout(timer);
+        timer = setTimeout(function () {
+          item.classList.remove("is-open");
+        }, 150);
+      }
+
+      item.addEventListener("mouseenter", open);
+      item.addEventListener("mouseleave", close);
+
+      /* Keep open while focus is inside (keyboard nav) */
+      item.addEventListener("focusin", open);
+      item.addEventListener("focusout", function (e) {
+        if (!item.contains(e.relatedTarget)) close();
+      });
     });
 
-    nav.querySelectorAll("a").forEach(function (a) {
-      a.addEventListener("click", function () {
-        btn.setAttribute("aria-expanded", "false");
-        nav.classList.remove("is-open");
-      });
+    /* Click outside closes all */
+    document.addEventListener("click", function (e) {
+      if (!e.target.closest(".nav-item")) {
+        document.querySelectorAll(".nav-item.is-open").forEach(function (item) {
+          item.classList.remove("is-open");
+        });
+      }
     });
   })();
 </script>
