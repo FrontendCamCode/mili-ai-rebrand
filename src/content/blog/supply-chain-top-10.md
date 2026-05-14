@@ -1,57 +1,55 @@
 ---
-title: Supply Chain Top 10
-description: Ten pressure points that show up repeatedly across indirect material supply chains.
+title: "The Top 10 Minefields in the MRO Supply Chain Maze (And How to Navigate Them)"
+description: "Years in the field distilled into ten critical MRO supply chain challenges — from material descriptions and criticality to free text spend and KPIs. Tim McLain's definitive guide to navigating the maze."
 publishedAt: 2024-02-14
-author: Lexin Solutions
-tags: [supply-chain, MRO, operations]
+author: Tim McLain
+tags: [MRO, supply chain, KPIs, purchasing]
 ---
 
-Indirect material supply chains — the procurement, storage, and use of maintenance, repair, and operations materials — are some of the most complex and underinvested parts of large industrial organisations. They lack the visibility of direct procurement, don't attract the same executive attention, and often run on a combination of ERP configuration, spreadsheets, and institutional knowledge.
+Ten critical challenges in the Maintenance, Repair, and Operations supply chain that organizations must address.
 
-The problems that result are predictable. After working across mining, utilities, oil and gas, and defence operations, these ten pressure points appear consistently.
+## 1. Material Descriptions (Short and Long Text)
 
-## 1. Too many material records, not enough good ones
+Unstructured descriptions without taxonomy-based organization create difficulties for users locating materials. This approach encourages workarounds and duplicate entries. Distinguishing between OEM and non-OEM materials significantly improves organizational outcomes.
 
-Most mature operations have tens of thousands of active material records. A significant proportion are duplicates, superseded, or so poorly described they can't be found by search. The quantity of records is inversely correlated with the quality of decisions they support.
+## 2. Material Criticality
 
-## 2. Stocking decisions made by instinct
+Organizations lack formal processes for determining which spare parts are genuinely critical versus merely important. "Emotional decisions" lead to over-classification, diminishing the value of actual critical designations used for segmentation.
 
-Reorder points and reorder quantities are set once, during an ERP implementation or a warehouse setup, and rarely revisited. They don't reflect current consumption patterns, lead time reality, or criticality. Overstock and stockout coexist in the same warehouse.
+## 3. Lack of BOMs (Bill of Materials)
 
-## 3. Spend hidden in free text
+Every spare part should appear in at least one Bill of Materials. Catalogued materials exist *"to reduce RISK to operations."* Inventory not referenced in BOMs typically remains unused warehouse waste.
 
-A meaningful fraction of MRO spend — often 15–25% — flows through free text purchase orders that bypass the material master entirely. This spend is invisible to analytics, uncontrolled, and frequently duplicated.
+## 4. Lack of Purchasing Master Data
 
-## 4. Lead times based on fiction
+ERP systems like SAP use Purchasing Information Records (PIRs) linking suppliers to materials. These records contain three essential elements: supplier part numbers, pricing, and lead times — all critical for MRP execution.
 
-Quoted lead times from suppliers are aspirational. Actual lead times, as measured from purchase order to goods receipt, are often double or triple the stated figure. Stocking strategies built on fictional lead times fail predictably.
+## 5. Lead Times
 
-## 5. Criticality not defined at the material level
+Lead times are frequently overlooked or assigned arbitrary values without updating. This practice creates downstream problems during requisition processing, particularly when maintenance teams verify availability based on inaccurate delivery dates.
 
-Assets are criticality-rated. The materials that support them often aren't. Without material-level criticality, buyers can't prioritise. Planners can't sequence. Stock investment decisions can't be justified.
+## 6. Reorder Points (ROP) & Reorder Quantities (ROQ)
 
-## 6. Inventory accuracy below threshold
+ROP and ROQ represent superior alternatives to simple Min/Max strategies but require regular recalculation. Treating these as static values causes either shortages or excess inventory, ignoring the material lifecycle.
 
-In most operations, physical stock counts don't match system records for a meaningful portion of items. Below roughly 90% accuracy, inventory data can't be trusted for planning. Below 80%, it becomes more useful to ignore the system than rely on it.
+## 7. Maverick or Free Text Spend
 
-## 7. Procurement and maintenance operating independently
+Free text spending represents a significant control failure, allowing personnel to circumvent inventory and procurement processes. When this spending exceeds 10%, organizations face problematic spend patterns typically involving unilateral pricing without negotiation.
 
-The purchasing team optimises for cost and supplier terms. The maintenance team optimises for availability. Without structured collaboration between them, the result is a constant trade-off — cheap materials that fail, or correct materials bought at punishing emergency freight rates.
+## 8. SLOB (Slow Moving or Potentially Obsolete) Inventory Reviews
 
-## 8. No systematic obsolescence management
+Regular SLOB reviews by reliability and maintenance teams are essential standardized practices. These evaluations determine whether materials warrant retention or obsolescence write-offs, directly impacting working capital efficiency.
 
-Inventory accumulates. Projects end, assets are retired, equipment is modified — and the supporting materials stay active in the warehouse, occupying capital and space. Without a regular obsolescence review process, dead stock compounds year on year.
+## 9. Stock Accuracy
 
-## 9. Approval workflows that don't match risk
+Stock accuracy represents the most critical warehouse KPI, ensuring ERP system records match physical inventory. Poor accuracy forces maintenance teams toward informal workarounds, undermining planning effectiveness.
 
-High-value, high-risk material changes require the same approval as trivial administrative updates. Or the reverse: significant changes go through without appropriate review. Workflow design should match the risk profile of the change, not default to the same path for everything.
+Regular inventory counts build interdepartmental trust and demonstrate commitment to data integrity.
 
-## 10. No measure of supply chain effectiveness
+## 10. Reporting & KPIs
 
-What gets measured gets managed. Most operations measure maintenance effectiveness (wrench time, PM compliance, backlog) without measuring supply chain effectiveness. Without KPIs for material availability, fill rates, and stock accuracy, the supply chain function has no feedback mechanism for improvement.
+*"What we don't measure, we cannot understand."* Many organizations maintain substantial inventory investments while lacking documented performance metrics, preventing meaningful strategy evaluation.
 
----
+## Conclusion
 
-Identifying these pressure points is the easy part. The harder work is prioritising which ones to address first, building the data foundation to measure improvement, and sustaining the discipline to close the gaps for good. That's where most programmes stall.
-
-The right starting point varies by operation — but in our experience, material master quality is the prerequisite for everything else. You can't fix stocking decisions, eliminate free text, or manage obsolescence if you don't have reliable material data to work from.
+Organizations must systematically address these ten areas to optimize their MRO supply chains, reducing operational risk while controlling costs.

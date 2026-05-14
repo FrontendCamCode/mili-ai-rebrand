@@ -1,35 +1,54 @@
 ---
-title: Eating from the Pantry
-description: How disciplined inventory consumption turns idle stock into working capital.
-publishedAt: 2024-03-12
-author: Lexin Solutions
-tags: [inventory, working-capital, MRO]
+title: "Eating from the Pantry in Asset Intensive Organizations"
+description: "The historic collapse of crude oil prices in April 2020 sparked a supply chain philosophy: use what you already have before buying more. A seven-step playbook for optimizing MRO inventory in SAP-driven organizations."
+publishedAt: 2024-04-20
+author: Justin Lester
+tags: [MRO, inventory, SAP, supply chain]
 ---
 
-Most warehouses have a pantry problem. Shelves full of stock that was once critical, once ordered in bulk, once justified by a project that finished two years ago. The materials sit there, tying up capital, occupying space, and slowly becoming obsolete while new purchase orders raise the total higher.
+On April 20, 2020, crude oil futures contracted into negative territory for the first time in history, settling around -$37 per barrel. During the crisis, a manager named Jenny offered this perspective: *"It's time to eat from the pantry. I'm sure we have enough inventory, on or off the books, to get through most of the problems we have out there."*
 
-The concept of "eating from the pantry" is simple: before raising a new purchase order, teams should first exhaust what they already have on hand. It sounds obvious. In practice, it rarely happens.
+This exchange became the foundation for a supply chain philosophy and the Maintenance Health Check program.
 
-## Why inventory stays on the shelf
+## The Success Story
 
-The core reason is visibility. If a planner doesn't know a material exists in another plant or storeroom, they order new stock. If a technician can't find a part in the cataloguing system because it was created under a different description, they raise a requisition. If the ERP record shows zero on hand when there are physically two units sitting in a corner, the procurement cycle starts again.
+Working with a company to audit their warehouse inventory, over one week the team identified over 400 parts physically present but not recorded in their SAP system. This discovery proved invaluable when three major preventive maintenance schedules came due and their vendor couldn't meet delivery timelines. The maintenance team successfully completed the work on schedule and saved $80,000 in working capital by using existing stock.
 
-Each failure compounds. Inventory grows. Working capital is consumed. The original problem — poor material master data — stays unaddressed.
+## Seven-Step Playbook for Optimization
 
-## What disciplined consumption requires
+### Step 1: Organize Inventory Properly
 
-Three things need to be in place before teams can reliably consume existing inventory:
+Before conducting physical counts, consolidate identical materials into single locations. Implement logical, sortable bin labeling systems. Staff involvement in this "spring cleaning" phase reinforces discipline going forward.
 
-**Accurate stock records.** If the quantity on hand in your system doesn't match the physical count, consumption decisions can't be trusted. A targeted stock accuracy initiative on high-value or high-movement items creates the foundation.
+### Step 2: Enable MRP Universally
 
-**A searchable material master.** Technicians and planners need to find the right material quickly. That means consistent naming conventions, clean descriptions, and a search function that handles partial matches and synonyms. Without it, duplicate materials proliferate and existing stock becomes invisible.
+"You'll **NEVER EAT FROM THE PANTRY** if you don't have SAP check inventory before you buy it." MRP must run for all items except obsolete stock. Use "Plan on Demand" (PD) for materials you don't wish to stock.
 
-**Workflow discipline.** Consuming existing stock before purchasing new should be a process requirement, not a guideline. Approval workflows for new purchase orders should prompt reviewers to confirm that existing inventory has been checked first.
+### Step 3: Structure Critical Equipment Planning
 
-## The working capital case
+Establish Bills of Materials (BOMs), maintenance plans, and task lists with associated parts for equipment. Distinguish between:
 
-A mid-size mining operation running 40,000 active material records might hold $15–30M in MRO inventory. If 15–20% of that is excess or obsolete — a conservative estimate across the industry — the working capital release opportunity is $2–6M without a single new purchase.
+- **Planned Work:** Low-impact items vendors stock; preventive maintenance parts; items with delivery flexibility
+- **Unplanned Work:** Critical components requiring immediate availability; items needing preservation protocols
 
-Eating from the pantry doesn't require a transformation program. It requires accurate data, better search, and the process discipline to use what you have before you buy more.
+The principle: **"THE BETTER YOU PLAN, THE LESS INVENTORY YOU NEED TO HOLD."**
 
-The pantry is already full. The opportunity is learning to use it.
+### Step 4: Run Daily MRP Cycles
+
+MRP functions as "your ERP's secret weapon." Frequent executions keep planners and buyers informed of real-time requirements.
+
+### Step 5: Manage by MRP Exception
+
+Utilize SAP's Stock Requirements List (S/4 interface or MD04 transaction code in ECC systems). These exceptions indicate supply-demand imbalances requiring action and should drive purchasing priorities.
+
+### Step 6: Implement Priority Allocation Based on Risk
+
+When part shortages affect competing work orders, consult your organization's risk matrix. Prioritize based on impact to people, environment, production, and reputation — not "first come, first served."
+
+### Step 7: Continuously Categorize Inventory
+
+Regularly review stock levels using objective data. As operational failures decrease, adjust reorder points accordingly and gradually consume surplus stock.
+
+## Closing
+
+Effective maintenance planning and inventory management create operational efficiency. The metaphor of "eating from the pantry" represents leveraging existing resources before acquiring new ones — a practice that benefits both cash flow and operational reliability.

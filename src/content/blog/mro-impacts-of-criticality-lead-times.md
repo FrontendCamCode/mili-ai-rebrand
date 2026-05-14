@@ -1,49 +1,45 @@
 ---
-title: MRO Impacts of Criticality and Lead Times
-description: How criticality and lead times affect MRO stocking decisions.
+title: "MRO: Impacts of Criticality & Lead Times"
+description: "If everything is critical, nothing is. Tim McLain examines how emotional bias inflates criticality classifications and how inaccurate lead times cascade into costly procurement problems."
 publishedAt: 2024-04-17
-author: Lexin Solutions
-tags: [criticality, lead-times, stocking, MRO]
+author: Tim McLain
+tags: [MRO, criticality, lead times, inventory]
 ---
 
-Two variables drive the majority of poor MRO stocking decisions. Not forecast accuracy. Not demand variability. Criticality and lead time — and most operations don't have reliable data for either.
+## Critical? Of course it is!
 
-## Why criticality matters for stocking
+Organizational staff often misuse the term "critical" to mean "stocked," creating confusion about material importance. Field research revealed that warehouse requestors simply wanted materials available — not necessarily because they were operationally critical.
 
-Criticality, in a maintenance context, describes the consequence of an asset or material failing to be available when needed. A high-criticality item is one whose absence would halt production, compromise safety, or create a compliance exposure. A low-criticality item creates inconvenience but not operational risk.
+This behavioral challenge prompted development of a criticality calculator to remove emotional bias from classification decisions. The tool revealed that even at major mining operations, no individual vehicle components met true criticality standards, despite their operational importance.
 
-The distinction should directly inform how much inventory you hold and where you hold it.
+**"If everything is critical, nothing is!"**
 
-For high-criticality items, the cost of a stockout — in lost production, emergency response, or safety exposure — is typically far greater than the cost of holding additional inventory. The inventory investment is justified as insurance, and the analysis should be framed accordingly.
+Truly critical materials warrant:
 
-For low-criticality items, the reverse often applies. Holding three months of stock for a material that can be sourced from a local supplier in two days is wasteful. Capital is tied up providing assurance that the operation doesn't actually need.
+- Zero stockouts
+- Annual cross-functional reviews (engineering, reliability, maintenance, supply chain)
+- Preservation and maintenance planning
+- Monthly inventory verification
+- Supplier contracts with guaranteed lead times
 
-When criticality ratings aren't applied at the material level, these distinctions collapse. Everything looks equally important. Stocking decisions default to uniform rules — minimum/maximum levels set during the initial ERP implementation — that don't reflect operational reality.
+True criticality differs from importance; materials can be valuable without being mission-critical to operations.
 
-## Why lead time accuracy matters
+---
 
-If criticality answers "how much does it matter if we run out," lead time answers "how long before we can recover."
+## Lead Time — What? Why?!
 
-The safety stock calculation — the buffer above the average demand needed to protect against stockouts — depends critically on lead time. Double the lead time and you roughly double the required safety stock, all else equal. Halve it and you free up significant working capital.
+Most organizations lack accurate lead time data, creating cascading problems for reorder points, safety stock calculations, and purchasing procedures. One mining operation assigned identical 10-day lead times to all contract materials — a "one-size-fits-all" approach that created costly consequences.
 
-The problem is that most operations use quoted lead times from suppliers, not measured lead times from their own purchase order history. Quoted lead times are optimistic. They represent best-case performance under normal conditions, not average performance over a full year including supplier delays, logistics disruptions, and customs holds.
+### Impact Example
 
-In our experience across mining, utilities, and oil and gas operations, actual measured lead times are typically 40–80% longer than the quoted figures that stocking calculations are based on. The result: safety stock levels that look right on paper but fail in practice.
+Incorrect lead time assumptions triggered:
+- Unnecessary purchase order expediting costs
+- Excess MRP exception messages
+- Potential hotshot freight charges when materials arrived before actual delivery dates
+- Higher procurement costs due to manual RFQ processes
 
-## The combined effect
+Proper lead time documentation directly prevents expensive workarounds and enables accurate inventory management.
 
-Criticality and lead time interact. A high-criticality item with a long lead time demands a substantial inventory investment — and the analysis to justify it. A low-criticality item with a short lead time can legitimately be held at minimal or zero stock, with replenishment triggered by actual demand.
+### Core Question
 
-When both inputs are wrong — criticality unrated, lead times fictional — stocking decisions are essentially arbitrary. Some high-criticality, long-lead items are understocked. Some low-criticality, short-lead items are overstocked. The average is roughly right but the distribution is wrong, and the wrong distribution is where operational risk and working capital waste hide.
-
-## What good looks like
-
-Getting to good requires:
-
-**Material-level criticality ratings** — not just asset criticality, but the criticality of each material relative to the assets it supports and the consequences of unavailability.
-
-**Lead times calculated from purchase order history** — actual measured performance, refreshed at least annually, and applied to safety stock and reorder point calculations.
-
-**Regular review cycles** — stocking parameters aren't a one-time setup. As consumption patterns change, as suppliers improve or degrade, as the asset base evolves, the inputs need to be refreshed.
-
-The organisations that get this right hold less inventory, have fewer stockouts, and spend less on emergency freight than those that don't. The advantage compounds over time.
+*"Can you effectively establish reorder points, quantities, or safety stock without knowing material criticality and procurement timelines?"* Both factors require careful management and regular updates.

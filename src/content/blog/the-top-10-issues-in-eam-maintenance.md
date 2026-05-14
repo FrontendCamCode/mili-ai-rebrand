@@ -1,75 +1,116 @@
 ---
-title: The Top 10 Issues in EAM Maintenance (and How to Navigate Them)
-description: The common maintenance and EAM issues that prevent teams from moving faster.
+title: "The Top 10 Issues in EAM & Maintenance (and How to Navigate Them)"
+description: "Siloed information creates barriers across the MRO supply chain. Justin Lester identifies the ten most common EAM and maintenance challenges — and how a well-implemented CMMS bridges the gap."
 publishedAt: 2024-01-22
-author: Lexin Solutions
-tags: [EAM, maintenance, operations]
+author: Justin Lester
+tags: [EAM, CMMS, maintenance, operations]
 ---
 
-Enterprise Asset Management systems are powerful — in theory. In practice, most maintenance teams use a fraction of what their EAM offers, spend significant time working around its limitations, and still can't answer basic questions like "what's the real cost of maintaining this asset?"
+Justin Lester steps up to represent the maintenance perspective in response to Tim McLain's article on supply chain challenges. Siloed information creates barriers across the MRO supply chain, and well-implemented Computerized Maintenance Management Systems (CMMS) serve as information bridges between departments.
 
-These aren't software problems. They're configuration, data, and process problems. Here are the ten issues we see most consistently, and what can be done about each.
+## Why CMMS Matters
 
-## 1. Poor work order data
+Four key benefits:
 
-Work orders with vague failure descriptions ("not working", "repair required") tell you nothing useful. Over time, a history of bad work order data makes it impossible to identify recurring failure patterns, justify reliability investment, or build accurate maintenance budgets.
+1. CMMS platforms serve as information bridges between maintenance, operations, and supporting teams
+2. Integrating supply chain and procurement into asset management uncovers collaboration opportunities and cost savings
+3. CMMS enables operational readiness by helping teams balance workloads and achieve targets
+4. These systems promote safety, environmental protection, and production continuity through proper work prioritization
 
-**Navigate it:** Enforce structured failure codes at work order closure. Link failure codes to functional locations and asset classes. The discipline required is operational, not technical.
-
-## 2. Incomplete bills of material
-
-If the parts required to maintain an asset aren't listed against it in the EAM, technicians are planning from memory. BOMs drive material availability, kitting, and shutdown planning. Incomplete BOMs mean reactive purchasing and delayed job starts.
-
-**Navigate it:** Use equipment commissioning and initial maintenance events to build BOMs from the ground up. Any job that goes on a planned backlog should have a BOM check as part of scoping.
-
-## 3. Disconnected material master
-
-When the EAM and the ERP or CMMS hold separate, out-of-sync material records, teams operate with two different pictures of what's available. Stock is ordered that already exists. Maintenance materials are created without procurement visibility.
-
-**Navigate it:** A single, authoritative material master is non-negotiable. Where integration between systems is limited, define a clear ownership model for which system is the source of truth.
-
-## 4. No criticality classification
-
-Without criticality ratings on assets and the materials that support them, everything looks equal. Planners can't prioritise. Buyers can't distinguish between a seal that will halt production if it fails and a light fitting.
-
-**Navigate it:** Implement a simple, defensible criticality model — even a three-tier classification (critical, important, standard) is transformative compared to none.
-
-## 5. Reactive procurement
-
-Maintenance materials are bought reactively because the planning horizon is too short. Work is identified, scoped, and scheduled without checking material availability until the job is about to start.
-
-**Navigate it:** Extend the planning horizon. Work that enters the planned backlog more than two weeks out should trigger a material check and procurement action at scoping, not at the week-before review.
-
-## 6. Free text purchasing
-
-Purchase orders raised with free text descriptions — rather than material numbers — bypass all the controls that the material master is supposed to enforce. Spend becomes untrackable. Duplicate stock builds up. Compliance fails.
-
-**Navigate it:** Monitor the volume of free text purchase orders as a KPI. The goal is zero. Every free text order that becomes recurring should trigger a material creation request.
-
-## 7. No lead time visibility
-
-When procurement doesn't have accurate lead times for critical materials, safety stock levels are set by instinct. Long-lead items run to zero. Emergency freight bills accumulate.
-
-**Navigate it:** Calculate lead times from actual purchase order history, not supplier promises. Review lead time data quarterly and adjust reorder points accordingly.
-
-## 8. Storeroom disorganisation
-
-A storeroom where stock can't be found is effectively a storeroom with no stock. Technicians don't trust it, so they order parts even when they exist. Shrinkage goes undetected.
-
-**Navigate it:** Location management is a basic storeroom function. Every material should have a designated bin location. Cycle counting against location records keeps the system honest.
-
-## 9. No closed-loop feedback
-
-Maintenance insights don't flow back to improve purchasing, stocking, or material data decisions. Problems get solved once and then recur because the fix wasn't embedded in the system.
-
-**Navigate it:** Create structured feedback paths between maintenance, stores, and procurement. Failure analysis that identifies a material issue should trigger a material master update.
-
-## 10. EAM adoption gaps
-
-The best EAM configuration fails if technicians and planners work around it. Paper-based planning, spreadsheet schedules, and verbal work orders all indicate an adoption problem — often rooted in usability rather than unwillingness.
-
-**Navigate it:** Measure EAM utilisation by function. Where adoption is low, understand why before investing in training. Often the problem is process design, not user attitude.
+Most organizations possess CMMS systems but "fail to harness its full capabilities," with some resorting to spreadsheets or third-party solutions.
 
 ---
 
-None of these problems are novel. They show up in every industry, every geography, every size of operation. What separates improving organisations from stagnant ones is the willingness to work through them systematically, one at a time.
+## Issue 1: Information Handover (Capital Projects to Operations)
+
+Organizations should develop structured handover processes from construction to operations. This includes:
+
+- Asset registry creation
+- Maintenance plan and task list development
+- Bill of materials (BOM) generation
+
+This is the "Slow Down to Go Fast" approach — operations staff should participate in design phases since field technicians understand equipment failure modes best.
+
+## Issue 2: Asset Registry & Equipment Creation
+
+Master data structure is foundational. Reference ISO 14224 standards. *"If you're working with a consultant that doesn't start here, RUN!"*
+
+Proper asset registry prevents mixing organizational levels and creates operational clarity.
+
+## Issue 3: Asset Criticality & Risk Matrix
+
+Tie decisions to **People, Environment, Production, and Reputation (IN THAT ORDER).**
+
+Organizations must:
+- Locate or create a company risk matrix
+- Use it to drive work prioritization
+- Use it to guide inventory decisions
+- Reference it for asset criticality assessments
+
+## Issue 4: Lack of Maintenance Plans
+
+Without systematic maintenance plan management, tools will "manage you." Both time-based and condition-based preventive maintenance require integration into change management and safety review processes.
+
+## Issue 5: Lack of Job Plans (People, Parts and Tools)
+
+*"Setting up a Maintenance Plan without adding a Job Plan is like making a cake without a recipe."*
+
+Proper job plans enable:
+- Resource and material forecasting
+- Supply chain visibility
+- Defect elimination connection
+- Significant cost savings
+
+## Issue 6: Not Prioritizing Work
+
+When everything is urgent, nothing receives appropriate attention. Recommendations:
+
+- Link work order priority to equipment criticality
+- Tie criticality to the risk matrix
+- Publish downtime and safety measures for visibility
+- Train maintenance managers to assign appropriate priorities before handing work to planners
+
+## Issue 7: Maverick Free Text Spending
+
+Uncontrolled spending typically stems from three sources:
+
+1. Poor material master descriptions
+2. Complicated procurement processes
+3. Inadequate planning and scheduling
+
+Solutions: plan work after confirming availability, reserve parts, allow MRP-driven requisitions, and automate routine purchase orders.
+
+## Issue 8: Trending Forecasted Spend
+
+Proper prioritization and planning directly reduce costs:
+
+- Avoid expedited shipping for lower-priority work
+- Negotiate better terms through consolidated purchasing (potentially 15–20% savings)
+- Planned work is safer than emergency repairs
+
+## Issue 9: Localized "Squirrel Store" Stock
+
+While field teams naturally want essentials nearby, decentralized inventory creates problems:
+
+- Dedicated inventory teams manage stock better than distributed locations
+- Squirrel stores inflate true maintenance costs
+- Duplicate inventory on work orders drives poor decision-making
+
+Work with procurement, not against it.
+
+## Issue 10: Reporting & KPIs
+
+*"What we don't measure, we cannot understand. What we don't understand, we cannot improve."*
+
+**Recommended KPIs:**
+
+- **Planned Demand %** — Measures advance notice for material needs; essential for reducing inventory
+- **Maintenance Plan Compliance** — Shows how well teams execute scheduled maintenance; drives staffing and program justification
+- **Weekly Schedule Compliance** — Compares planned versus actual completion; reveals delays and helps refine prioritization
+- **Maintenance Plan Cost Variances** — Identifies when corrective work gets added to preventive plans, reveals missing job plan components, detects unrecorded labor
+
+Start with a 20% variance threshold and progressively tighten it.
+
+## Conclusion
+
+Effective EAM requires moving beyond basic CMMS adoption to strategic implementation across maintenance planning, supply chain integration, and data-driven management.

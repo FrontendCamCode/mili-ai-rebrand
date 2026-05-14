@@ -1,48 +1,32 @@
 ---
-title: "MRO Reorder Quantity (ROQ) Calculation"
-description: A plain-English guide to reorder quantity calculations for MRO teams.
-publishedAt: 2024-07-29
-author: Lexin Solutions
-tags: [ROQ, stocking, inventory-optimisation]
+title: "MRO: Reorder Quantity (ROQ) Calculation"
+description: "ROQ is about cost. ROP is about risk. Tim McLain explains how to calculate optimal reorder quantities — and why MIN/MAX strategies designed for production environments are costing your operation money."
+publishedAt: 2024-03-05
+author: Tim McLain
+tags: [MRO, ROQ, ROP, inventory, purchasing]
 ---
 
-Reorder quantity — how much to order each time stock falls to the reorder point — is one of the most consequential and least examined parameters in MRO inventory management. Most organisations set it once and forget it. The cost of that neglect compounds quietly in the form of excess inventory, premature stockouts, and suboptimal purchasing cycles.
+While ROP (Reorder Point) addresses operational risk management, *"the ROQ is more about COST when compared to the ROP which is more focused on RISK."* The ROQ is supporting infrastructure that enables efficiency.
 
-## Why ROQ is different from ROP
+## Key Concepts
 
-Reorder point (ROP) tells you **when** to order. Reorder quantity (ROQ) tells you **how much** to order. The two are related but distinct, and confusing them is a common source of inventory problems.
+For expensive, critical materials, the optimal strategy involves setting an ROQ of one, replenishing stock only when the ROP is reached. This applies primarily to high-value items. Low-value consumables like protective equipment require higher ROQs to justify procurement expenses.
 
-ROP is primarily a function of lead time and demand variability — it's the safety net that ensures you don't run out before replenishment arrives. ROQ is a function of ordering cost, holding cost, and demand rate — it's the efficiency calculation that determines the optimal order size.
+## Financial Impact
 
-## The basic EOQ model
+A practical example illustrates the cost consequences of quantity decisions. A $1,000 valve demonstrates a 29% cost increase with manually generated purchase orders when ROQ doubles, and 39% with automated systems. Scaled across thousands of inventory items, these cumulative decisions create significant financial pressure.
 
-The Economic Order Quantity (EOQ) formula is the foundation:
+## ROQ versus MAX
 
-**EOQ = √(2DS / H)**
+Though similar superficially, ROQ and MAX strategies operate differently. Key considerations include:
 
-Where:
-- **D** = Annual demand (units per year)
-- **S** = Ordering cost (cost per purchase order)
-- **H** = Holding cost (cost to hold one unit for one year)
+- Optimal ROQ may equal zero (replenish only to ROP)
+- ROQ need not exceed ROP
+- ROQ serves cost optimization, not rounding convenience
+- ROP remains the risk management priority
 
-The formula balances two competing costs. Ordering in large quantities reduces the number of orders placed (lower ordering cost) but increases the average inventory held (higher holding cost). EOQ finds the minimum-cost intersection.
+## Strategic Question
 
-## Why EOQ needs adjustment for MRO
+*"What operational benefit (risk and cost) are you delivering to the business by stocking materials above the reorder point?"*
 
-EOQ was designed for high-volume, steady-demand environments. MRO materials rarely fit this profile. A few adjustments are typically required:
-
-**Lumpy demand.** Many MRO items are used infrequently — zero demand for months, then a significant draw during a planned shutdown. Averaging annual demand hides the lumpiness. For items with highly irregular demand, consider a demand-weighted approach or a minimum order quantity that ensures you're not ordering less than a sensible working quantity.
-
-**Supplier minimums and packaging.** Suppliers often impose minimum order quantities or sell in fixed pack sizes. EOQ is a continuous function; actual order quantities are discrete. Always round to the nearest practical order quantity, not just the nearest whole number.
-
-**Criticality adjustments.** For high-criticality items, the cost of a stockout is not captured in the standard EOQ model. A criticality premium — holding additional inventory beyond the EOQ-derived quantity — can be justified by the cost of unavailability.
-
-**Shelf life.** Some MRO materials degrade over time. Seals, belts, and certain chemicals have practical shelf lives. Ordering in large quantities to minimise ordering cost doesn't make sense if the excess stock will be condemned before it's used.
-
-## A practical approach
-
-For most MRO operations, a simplified version of the EOQ calculation — using average annual demand, an estimated ordering cost of $50–200 per order, and a holding cost of 20–30% of item value per year — produces reasonable results as a starting point. The key discipline is reviewing and updating the parameters annually.
-
-Ordering cost and holding cost are often the least accurate inputs. Ordering cost should include buyer time, approval processing, goods receipt, and invoice matching — not just the transactional fee. Holding cost should include capital cost, warehouse space, insurance, and obsolescence risk.
-
-Getting ROQ right won't transform an operation overnight. But getting it consistently wrong — across thousands of stocked items — is one of the least visible and most persistent drains on MRO working capital.
+MIN/MAX approaches, originally designed for production environments, frequently result in both overstocking and understocking — an expensive operational reality.

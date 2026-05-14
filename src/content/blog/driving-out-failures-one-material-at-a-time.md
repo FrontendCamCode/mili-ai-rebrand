@@ -1,32 +1,54 @@
 ---
-title: Driving Out Failures One Material at a Time
-description: A practical look at reducing recurring failures through better material data.
+title: "Driving Out Failures, One Material at a Time"
+description: "Most organizations fail to connect supply chain management with maintenance through their ERP. A four-step process for using failure cause mapping and SAP to drive out defects — one material at a time."
 publishedAt: 2024-05-08
-author: Lexin Solutions
-tags: [reliability, material-data, maintenance]
+author: Justin Lester
+tags: [reliability, SAP, failure codes, maintenance]
 ---
 
-Recurring equipment failures are one of the most persistent and frustrating problems in asset-intensive operations. A pump fails. The root cause is traced to a substandard seal. A replacement is fitted. Six weeks later, the pump fails again — same seal, same failure mode.
+During an inventory count at an oil and gas company, the discovery of forgotten cylinder rings sparked a question: why do organizations hold excess inventory? The answer led to learning about failure cause mapping from reliability engineers — and a realization that most organizations simply don't understand what they already own.
 
-The investigation reveals the seal specification in the work order didn't match the original equipment manufacturer's requirement. The material master had an incorrect attribute. The purchasing team ordered what the system said, not what the equipment actually needed.
+Many organizations fail to connect supply chain management with maintenance operations through standard ERP functionality. Most people just don't understand what they already own, highlighting a widespread gap in leveraging SAP's built-in capabilities.
 
-This is a material data problem dressed up as a reliability problem.
+## The Playbook: Four-Step Process
 
-## The hidden role of the material master
+### 1. Work Notification — Identify and Record Failures
 
-Most reliability improvement programs focus on inspection regimes, maintenance strategies, and equipment history. Fewer focus on the quality of the material records that feed those strategies. Yet in many cases, bad material data is directly upstream of the failure.
+Capture failure information using standardized fields:
 
-Common material data failures that drive recurring equipment issues include:
+- **What Failed?** Specific equipment record
+- **Priority:** Based on impact to people, environment, production, and reputation
+- **Why?** Using failure codes with four categories:
+  - Object Part (component that failed)
+  - Damage (what was wrong with it)
+  - Cause (filled after work completion)
+  - Activity (repair action taken)
 
-- **Wrong specifications on file.** Pressure ratings, temperature tolerances, and dimensional data that don't match the equipment as-built.
-- **Substitutes logged without validation.** An alternative part is used during a stock-out, added to the system as an approved substitute, and subsequently ordered as standard — even when it isn't fit for purpose.
-- **Missing manufacturer part numbers.** Without cross-references to OEM part numbers, teams can't verify that what they're ordering matches what the equipment requires.
-- **Superseded materials still active.** Manufacturer updates and revisions don't always flow back into the material master, leaving outdated specifications in circulation.
+### 2. Work Orders — Plan, Schedule, Execute
 
-## A systematic approach
+The critical step many organizations skip: adding parts with material numbers rather than free text requisitions.
 
-Driving out failures through better material data is methodical work. It starts with identifying recurring failure patterns and tracing them upstream to the material records involved. For each failure mode with a material link, the question is: does the material master accurately describe what the equipment actually needs?
+**"FREE TEXT REQUISITIONS WILL DESTROY YOUR RELIABILITY PROGRAM!"**
 
-The answer is frequently no. Records are cleaned, specifications are validated against OEM documentation, and alternative parts are reviewed for true fit-for-purpose status. The changes are small individually. Cumulatively, they reduce the feed rate of substandard materials into the maintenance process.
+Proper workflow:
+1. Create work order from notification
+2. Add parts with material numbers
+3. Complete failure codes after repair
 
-The result isn't a step-change in reliability overnight. It's a consistent reduction in the low-level recurring failures that consume technician time, drive unplanned downtime, and quietly erode equipment life. One material at a time.
+### 3. Analyze Failure Data
+
+Organizations can identify patterns across locations using standard SAP reports. Example: discovering that ten impeller failures across ten locations shared identical causes (corrosion) and the same manufacturer.
+
+### 4. Connect Supply Chain
+
+Armed with failure data, procurement teams can make informed decisions about vendors, specifications, and quality control measures.
+
+## Getting Started: Five Recommendations
+
+1. **Keep it Simple** — Focus on critical equipment initially
+2. **Make Data Relevant** — Establish regular reviews of failure codes and unplanned spending
+3. **Create Equipment-Specific Failure Code Catalogs** — Reference ISO 14224 as a foundation
+4. **Utilize Technology to Enforce Processes** — Configure SAP to require failure codes before completion
+5. **Understand Master Data Architecture** — Ensure proper organization of Material Masters, Purchasing Info Records, Source Lists, and Bills of Materials
+
+**NOW GO ELIMINATE SOME DEFECTS!**
