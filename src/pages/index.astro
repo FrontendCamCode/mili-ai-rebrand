@@ -137,33 +137,33 @@ const featureCards = [
 ];
 
 const allFeatures = [
-  { label: "Supplier Scorecard",      icon: icons.chart,     soon: true },
-  { label: "Material Search",         icon: icons.search },
-  { label: "Material Creation",       icon: icons.boxes },
-  { label: "Material Extension",      icon: icons.database },
-  { label: "Bulk Enrichment",         icon: icons.checklist },
-  { label: "Spend Analytics",         icon: icons.database,  soon: true },
+  { label: "Supplier Scorecard",      slug: "supplier-scorecard",      icon: icons.chart,     soon: true },
+  { label: "Material Search",         slug: "material-search",         icon: icons.search },
+  { label: "Material Creation",       slug: "material-creation",       icon: icons.boxes },
+  { label: "Material Extension",      slug: "material-extension",      icon: icons.database },
+  { label: "Bulk Enrichment",         slug: "bulk-enrichment",         icon: icons.checklist },
+  { label: "Spend Analytics",         slug: "spend-analytics",         icon: icons.database,  soon: true },
 
-  { label: "MRO Analytics",           icon: icons.chart,     soon: true },
-  { label: "ROP & ROQ Calculator",    icon: icons.chart },
-  { label: "Lead Time Calculator",    icon: icons.clock },
-  { label: "Material Details",        icon: icons.database },
-  { label: "Flag for Deletion",       icon: icons.shield },
-  { label: "Contract Management",     icon: icons.checklist, soon: true },
+  { label: "MRO Analytics",           slug: "mro-analytics",           icon: icons.chart,     soon: true },
+  { label: "ROP & ROQ Calculator",    slug: "rop-roq-calculator",      icon: icons.chart },
+  { label: "Lead Time Calculator",    slug: "lead-time-calculator",    icon: icons.clock },
+  { label: "Material Details",        slug: "material-details",        icon: icons.database },
+  { label: "Flag for Deletion",       slug: "flag-for-deletion",       icon: icons.shield },
+  { label: "Contract Management",     slug: "contract-management",     icon: icons.checklist, soon: true },
 
-  { label: "Part Interchangeability", icon: icons.boxes,     soon: true },
-  { label: "Free Text Monitor",       icon: icons.search },
-  { label: "BOM Monitor",             icon: icons.boxes },
-  { label: "Duplicate Monitor",       icon: icons.checklist },
-  { label: "Criticality Calculator",  icon: icons.settings },
-  { label: "Vendor Performance",      icon: icons.shield,    soon: true },
+  { label: "Part Interchangeability", slug: "part-interchangeability", icon: icons.boxes,     soon: true },
+  { label: "Free Text Monitor",       slug: "free-text-monitor",       icon: icons.search },
+  { label: "BOM Monitor",             slug: "bom-monitor",             icon: icons.boxes },
+  { label: "Duplicate Monitor",       slug: "duplicate-monitor",       icon: icons.checklist },
+  { label: "Criticality Calculator",  slug: "criticality-calculator",  icon: icons.settings },
+  { label: "Vendor Performance",      slug: "vendor-performance",      icon: icons.shield,    soon: true },
 
-  { label: "Predictive Reorder",      icon: icons.chart,     soon: true },
-  { label: "MiLi Mind",               icon: icons.sparkles,  ai: true },
-  { label: "AI Tool API",             icon: icons.cpu,       ai: true },
-  { label: "Agentic Workflows",       icon: icons.sparkles,  ai: true },
-  { label: "AI Insights",             icon: icons.chart,     ai: true },
-  { label: "AI Procurement",          icon: icons.database,  soon: true },
+  { label: "Predictive Reorder",      slug: "predictive-reorder",      icon: icons.chart,     soon: true },
+  { label: "MiLi Mind",               slug: "mili-mind",               icon: icons.sparkles,  ai: true },
+  { label: "AI Tool API",             slug: "ai-tool-api",             icon: icons.cpu,       ai: true },
+  { label: "Agentic Workflows",       slug: "agentic-workflows",       icon: icons.sparkles,  ai: true },
+  { label: "AI Insights",             slug: "ai-insights",             icon: icons.chart,     ai: true },
+  { label: "AI Procurement",          slug: "ai-procurement",          icon: icons.database,  soon: true },
 ];
 
 const steps = [
@@ -180,27 +180,24 @@ const compareRows = [
   ["Security", "SOC 2 Type II, ISO 27001, TLS 1.3, AES-256", "Vendor dependent", "File-based risk"],
 ];
 
-const testimonials = [
-  {
-    quote: "Working capital savings in the first 12 months.",
-    metric: "$9 million",
-    role: "Real world customer result",
-  },
-  {
-    quote: "Savings identified in the first 30 days.",
-    metric: "$1.2 million",
-    role: "Real world customer result",
-  },
-  {
-    quote: "Lead time reduction from 19 days to 2 days.",
-    metric: "17 days",
-    role: "Real world customer result",
-  },
+const wins = [
+  { metric: "$9 million",  quote: "Working capital savings in the first 12 months." },
+  { metric: "$1.2 million", quote: "Savings identified in the first 30 days." },
+  { metric: "17 days",     quote: "Lead time reduction from 19 days to 2 days." },
+  { metric: "20%",         quote: "Duplicate materials reviewed and removed." },
+  { metric: "$2.2 million", quote: "Savings in ROP/ROQ reductions." },
+  { metric: "$5.4 million", quote: "Reorder point reduction cash flow savings." },
+  { metric: "58%",         quote: "MRP exception reduction in 4 months." },
+  { metric: "3.3x",        quote: "Stock turns increase from 1x annually." },
+  { metric: "21%",         quote: "Inventory stocking position reduction." },
+  { metric: "11%",         quote: "Unit cost reduction driven by supplier consolidation." },
 ];
 
 const statTiles = [
   "$9M working capital savings",
   "$1.2M savings identified",
+  "$2.2M ROP/ROQ reductions",
+  "$5.4M cash flow savings",
   "58% MRP exception reduction",
   "3.3x stock turns increase",
   "21% inventory position reduction",
@@ -241,6 +238,7 @@ const faqs = [
 ];
 
 const assetBase = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const href = (path: string) => `${assetBase}${path.replace(/^\//, "")}`;
 ---
 
 <html lang="en">
@@ -282,15 +280,10 @@ const assetBase = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_
           <div class="slider-shell" data-slider>
             <div class="slides-track" data-slides>
               {heroSlides.map((slide, index) => (
-                <article class:list={["product-hero", { "is-active": index === 0 }]} data-slide aria-hidden={index === 0 ? "false" : "true"}>
+                <article class:list={["product-hero", { "is-active": index === 0 }, { "product-hero--dark": index === 0 }]} data-slide aria-hidden={index === 0 ? "false" : "true"}>
                   <div class="hero-card-copy">
                     <p>{slide.eyebrow}</p>
                     <h1>{slide.title}</h1>
-                  </div>
-                  <div class="feature-stack">
-                    {slide.features.map(([title, copy]) => (
-                      <article><b>{title}</b><span>{copy}</span></article>
-                    ))}
                   </div>
                 </article>
               ))}
@@ -305,15 +298,16 @@ const assetBase = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_
               </button>
             ))}
           </div>
-          <figure class="hero-quote">
-            <blockquote>
-              "We enable your team to fully realize the benefits of MiLi across all pillars of your indirect material supply chain."
-            </blockquote>
-            <figcaption>
-              <b>The Lexin Way</b>
-              <span>Outcomes-driven technology partner</span>
-            </figcaption>
-          </figure>
+          <div class="wins-marquee" aria-label="Real world customer results from Lexin Solutions">
+            <div class="wins-marquee-track">
+              {[...wins, ...wins].map((win) => (
+                <article class="wins-pill">
+                  <strong>{win.metric}</strong>
+                  <span>{win.quote}</span>
+                </article>
+              ))}
+            </div>
+          </div>
         </div>
 
         <div class="offer-column">
@@ -331,7 +325,7 @@ const assetBase = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_
               <h3 id="feature-panel-title">What MiLi does</h3>
               <p>Purpose-built tools for every part of your materials operation.</p>
             </div>
-            <div class="mini-feature-grid" data-feature-list>
+            <div class="mini-feature-grid" id="hero-feature-list" data-feature-list>
               {heroFeatures.map((feature, index) => (
                 <article class:list={["mini-feature", { "is-extra": index > 3 }]}>
                   <span set:html={feature.icon}></span>
@@ -340,7 +334,7 @@ const assetBase = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_
               ))}
             </div>
             <div class="feature-fade" data-feature-fade>
-              <button type="button" data-feature-toggle>View all features</button>
+              <button type="button" aria-controls="hero-feature-list" aria-expanded="false" data-feature-toggle>View all features</button>
             </div>
           </section>
 
@@ -367,17 +361,21 @@ const assetBase = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_
           <h2>Built to solve every part of your materials problem.</h2>
           <p>Each module targets a specific operational challenge — from unreliable master data to excess inventory to missing critical parts.</p>
         </div>
-        <div class="icon-row outcomes-row">
-          {outcomes.map((benefit) => <article><span set:html={benefit.icon}></span><b>{benefit.label}</b></article>)}
-        </div>
         <div class="features-grid-outer">
           <div class="features-grid">
             {allFeatures.map((feature) => (
-              <article class:list={["feature-cell", { "is-soon": feature.soon, "is-ai": feature.ai }]}>
-                <span set:html={feature.icon}></span>
-                <b>{feature.label}</b>
-                {feature.soon && <small>Soon</small>}
-              </article>
+              feature.soon ? (
+                <article class:list={["feature-cell", "is-soon"]}>
+                  <span set:html={feature.icon}></span>
+                  <b>{feature.label}</b>
+                  <small>Soon</small>
+                </article>
+              ) : (
+                <a href={href(`features/${feature.slug}`)} class:list={["feature-cell", { "is-ai": feature.ai }]}>
+                  <span set:html={feature.icon}></span>
+                  <b>{feature.label}</b>
+                </a>
+              )
             ))}
           </div>
         </div>
@@ -453,11 +451,11 @@ const assetBase = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_
           <strong>Real world results we've achieved with customers</strong>
         </div>
         <div class="testimonial-list">
-          {testimonials.map((item) => (
+          {wins.map((item) => (
             <article>
               <span>{item.metric}</span>
               <h3>{item.quote}</h3>
-              <p>{item.role}</p>
+              <p>Real world customer result</p>
             </article>
           ))}
         </div>
@@ -505,7 +503,7 @@ const assetBase = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_
     </div>
 
     <script is:inline>
-      window.addEventListener("DOMContentLoaded", () => {
+      function initHomePage() {
         const featureToggle = document.querySelector("[data-feature-toggle]");
         const featureList = document.querySelector("[data-feature-list]");
         const featureFade = document.querySelector("[data-feature-fade]");
@@ -513,6 +511,7 @@ const assetBase = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_
         featureToggle?.addEventListener("click", () => {
           const expanded = featureList?.classList.toggle("is-expanded");
           featureFade?.classList.toggle("is-expanded", Boolean(expanded));
+          featureToggle.setAttribute("aria-expanded", expanded ? "true" : "false");
           featureToggle.textContent = expanded ? "Show fewer features" : "View all features";
         });
 
@@ -555,7 +554,13 @@ const assetBase = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_
             showSlide(deltaX < 0 ? activeSlide + 1 : activeSlide - 1);
           }
         }, { passive: true });
-      });
+      }
+
+      if (document.readyState === "loading") {
+        window.addEventListener("DOMContentLoaded", initHomePage, { once: true });
+      } else {
+        initHomePage();
+      }
     </script>
   </body>
 </html>
